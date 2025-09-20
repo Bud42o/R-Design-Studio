@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script>
+function loadGtag() {
+    if (window.gtagLoaded) return; // Prevent double loading
+    window.gtagLoaded = true;
+
+    const gtagScript = document.createElement('script');
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-J3JBHRMPHS";
+    gtagScript.async = true;
+
+    gtagScript.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-J3JBHRMPHS');
+    };
+
+    document.body.appendChild(gtagScript);
+}
+
+// Listen for first user interaction
+['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt => {
+    window.addEventListener(evt, loadGtag, { once: true });
+});
+</script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R Design Studio – Web & Graphic Design Services</title>
+  <meta name="description" content="Transform your business with R Design Studio: landing pages, e-commerce stores, custom websites, and graphic design services. Get a free quote!">
+
+  <!-- Favicon & App Icons -->
+  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Preconnect & Preload -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <link rel="preload" href="assets/logo.avif" as="image" fetchpriority="high" type="image/avif">
+  <link rel="preload" href="assets/bg-hero.avif" as="image" fetchpriority="high" type="image/avif">
+  <link rel="preload" href="assets/hero-bg-mobile.avif" as="image" fetchpriority="high" type="image/avif">
+
+  <!-- Preconnect to Google Fonts to speed up font loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload the Montserrat font stylesheet -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+
+<!-- Load Montserrat font stylesheet asynchronously to avoid blocking rendering -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" media="all" onload="this.media='all'">
+
+<!-- Fallback for no-JS browsers -->
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</noscript>
+
+  <link rel="preload" href="assets/logo.avif" as="image" fetchpriority="high" type="image/avif">
+  <link rel="preload" href="assets/bg-hero.avif" as="image" type="image/avif">
+
+  <!-- Canonical URL -->  
+  <link rel="canonical" href="https://rdesigns.pro/">
+
+  <!-- Theme & Mobile -->
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="R Design Studio - Professional Web Design & Development Agency | Landing Pages, E-commerce, Custom Websites">
+  <meta property="og:description" content="Creative branding, modern web design, and digital solutions that help your business grow.">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:url" content="https://rdesigns.pro/">
+  <meta property="og:site_name" content="R Design Studio">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="R Design Studio - Professional Web Design & Development Agency | Landing Pages, E-commerce, Custom Websites">
+  <meta name="twitter:description" content="Creative branding, modern web design, and digital solutions that help your business grow.">
+  <meta name="twitter:image" content="assets/logo.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./output.css">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .card-hover:active {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+
+      button, a {
+        min-height: 44px;
+        min-width: 44px;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "R Design Studio",
+    "alternateName": ["R Design Studio Web Design Agency", "RDesignStudio", "R Design", "R Studio"],
+    "url": "https://rdesigns.pro",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rdesigns.pro/assets/logo.avif",
+      "width": 512,
+      "height": 512
+    },
+    "image": [
+      "https://rdesigns.pro/assets/bg-hero.avif",
+      "https://rdesigns.pro/assets/hero-bg-mobile.avif"
+    ],
+    "description": "R Design Studio is a leading professional web design and development agency specializing in creating high-converting landing pages, e-commerce websites, custom web applications, and comprehensive graphic design services. We help businesses transform their digital presence with innovative solutions.",
+    "slogan": "Turning Concepts Into Creations",
+    "foundingDate": "2020-01-01",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "United Kingdom"
+    },
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "10-50"
+    },
+    "knowsAbout": [
+      "Web Design", "Website Development", "E-commerce Development", "Landing Page Design",
+      "Graphic Design", "UI/UX Design", "Responsive Design", "SEO Optimization",
+      "Digital Marketing", "Brand Identity", "Logo Design", "WordPress Development",
+      "Shopify Development", "Custom Web Applications", "API Integration", "Database Design"
+    ],
+    "areaServed": { "@type": "Place", "name": "Worldwide" },
+    "serviceArea": [
+      { "@type": "Place", "name": "United Kingdom" },
+      { "@type": "Place", "name": "United States" },
+      { "@type": "Place", "name": "Canada" },
+      { "@type": "Place", "name": "Australia" },
+      { "@type": "Place", "name": "Europe" }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+447570429558",
+        "contactType": "customer service",
+        "email": "contact@rdesigns.pro",
+        "availableLanguage": ["English"],
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00",
+          "validFrom": "2020-01-01",
+          "validThrough": "2030-12-31"
+        },
+        "areaServed": "Worldwide"
+      }
+    ],
+    "address": { "@type": "PostalAddress", "addressCountry": "GB", "addressRegion": "England" },
+    "sameAs": [
+      "https://linkedin.com",
+      "https://instagram.com"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Sarah Martinez" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "R Design Studio created an amazing landing page for our startup. The conversion rate increased by 40% within the first month. Their attention to detail is incredible!",
+        "datePublished": "2024-01-15",
+        "itemReviewed": { "@type": "Organization", "name": "R Design Studio", "url": "https://rdesigns.pro" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "James Chen" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Professional, creative, and delivered exactly what we needed. Our online shop looks fantastic and sales have doubled since launch. Highly recommend!",
+        "datePublished": "2024-02-10",
+        "itemReviewed": { "@type": "Organization", "name": "R Design Studio", "url": "https://rdesigns.pro" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Alex Rivera" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "They transformed my vision into a beautiful portfolio website. The design perfectly captures my artistic style and I've received so many compliments from visitors.",
+        "datePublished": "2024-03-10",
+        "itemReviewed": { "@type": "Organization", "name": "R Design Studio", "url": "https://rdesigns.pro" }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "R Design Studio",
+    "alternateName": "R Design Studio - Professional Web Design Agency",
+    "url": "https://rdesigns.pro",
+    "description": "Professional web design and development services including landing pages, e-commerce solutions, custom websites, and graphic design.",
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
+    "isFamilyFriendly": true,
+    "keywords": "web design, website development, landing pages, e-commerce, online shop, custom websites, graphic design, SEO, responsive design, professional web design agency",
+    "mainEntity": { "@type": "Organization", "name": "R Design Studio" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "R Design Studio",
+    "description": "Professional web design and development agency offering comprehensive digital solutions for businesses worldwide.",
+    "url": "https://rdesigns.pro",
+    "telephone": "+447570429558",
+    "email": "contact@rdesigns.pro",
+    "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+    "geo": { "@type": "GeoCoordinates", "latitude": "51.5074", "longitude": "-0.1278" },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "priceRange": "€500-€5000",
+    "paymentAccepted": ["Cash", "Credit Card", "PayPal", "Bank Transfer"],
+    "currenciesAccepted": ["USD", "GBP", "EUR", "RON"],
+    "serviceType": "Web Design and Development",
+    "areaServed": "Worldwide"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://rdesigns.pro/#localbusiness",
+    "name": "R Design Studio",
+    "description": "Leading web design agency in the UK providing professional website development services globally.",
+    "url": "https://rdesigns.pro",
+    "telephone": "+447570429558",
+    "email": "contact@rdesigns.pro",
+    "address": { "@type": "PostalAddress", "addressCountry": "GB", "addressRegion": "England" },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "150" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rdesigns.pro" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://rdesigns.pro#solutions" },
+      { "@type": "ListItem", "position": 3, "name": "Reviews", "item": "https://rdesigns.pro#reviews" },
+      { "@type": "ListItem", "position": 4, "name": "Contact", "item": "https://rdesigns.pro#contact" },
+      { "@type": "ListItem", "position": 5, "name": "About", "item": "https://rdesigns.pro#about" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What web design services does R Design Studio offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "R Design Studio offers comprehensive web design services including high-converting landing pages, e-commerce online shops, custom website development, and professional graphic design services. We specialize in creating mobile-responsive, SEO-optimized websites that drive business growth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to complete a website project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most website projects are completed within 1-2 weeks, depending on complexity. Landing pages typically take 5-7 business days, while custom websites and e-commerce solutions may take 2-4 weeks. We provide detailed timelines during the consultation phase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer unlimited revisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer unlimited revisions on all our projects. We work closely with you until you're 100% satisfied with the final result. Our goal is to ensure your website perfectly represents your brand and meets your business objectives."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are your websites mobile-responsive and SEO-optimized?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! All our websites are built with mobile-first design principles and are fully responsive across all devices. We also implement comprehensive SEO optimization including meta tags, structured data, fast loading times, and search engine-friendly code structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is your pricing for web design services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our pricing varies based on project complexity and requirements. Landing pages start from €300, e-commerce websites from €1000, custom websites from €500, and graphic design services from €50. We provide detailed quotes after understanding your specific needs during a free consultation."
+        }
+      }
+    ]
+  }
+]
+
+  </script>
+</head>
+
+
+<body class="bg-gray-50">
+
+<!-- Navigation -->
+<nav class="bg-gray-800/85 backdrop-blur-md shadow-lg fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <a href="#home" class="flex items-center">
+                    <img alt="Logo" src="assets/logo.avif" class="h-8 w-auto" fetchpriority="high">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-blue-500 transition-colors">Home</a>
+                <a href="#solutions" class="text-white hover:text-blue-500 transition-colors">Solutions</a>
+                <a href="#contact" class="text-white hover:text-blue-500 transition-colors">Contact</a>
+                <a href="#about" class="text-white hover:text-blue-500 transition-colors">About</a>
+            </div>
+            
+<!-- Mobile menu button -->
+<div class="md:hidden">
+    <button id="mobile-menu-button" aria-label="Toggle menu"
+        class="text-white hover:text-blue-500 transition-colors p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+</div>
+
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden border-t border-gray-700 hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-white hover:text-blue-500 hover:bg-gray-800/30 rounded-md transition-colors">Home</a>
+                <a href="#solutions" class="block px-3 py-2 text-white hover:text-blue-500 hover:bg-gray-800/30 rounded-md transition-colors">Solutions</a>
+                <a href="#contact" class="block px-3 py-2 text-white hover:text-blue-500 hover:bg-gray-800/30 rounded-md transition-colors">Contact</a>
+                <a href="#about" class="block px-3 py-2 text-white hover:text-blue-500 hover:bg-gray-800/30 rounded-md transition-colors">About</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+    <!-- Main Website Container -->
+    <div id="main-website">
+<!-- Hero Section -->
+<main role="main">
+  <section id="home"
+           class="
+             pt-20 pb-16 text-white
+             bg-hero-mobile sm:bg-hero-desktop
+             bg-cover bg-center bg-no-repeat
+             min-h-screen h-screen relative
+           "
+           role="banner"
+           itemscope
+           itemtype="https://schema.org/WebPageElement">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div class="grid sm:grid-cols-2 gap-12 items-center h-full">
+        <article class="
+                 fade-in text-center md:text-left
+                 flex flex-col min-h-full h-full
+               "
+                 itemscope
+                 itemtype="https://schema.org/Article">
+
+          <header class="
+                   fade-in relative flex flex-col
+                   justify-start sm:justify-center flex-1
+                   pt-12 sm:pt-0
+                 ">
+            <div class="flex flex-col items-center sm:items-start">
+              
+              <h1 class="
+                       mb-4 leading-tight text-xl sm:text-3xl lg:text-3xl
+                       font-bold text-center sm:text-left
+                     ">
+                <span class="text-white">Turning Concepts Into</span>
+                <span class="text-indigo-400"> Creations</span>
+              </h1>
+              
+              <p class="
+                       text-base sm:text-lg lg:text-xl
+                       mb-6 text-purple-100 leading-relaxed
+                       text-center sm:text-left
+                     ">
+                Our mission is simple: transforming ideas into assets that grow your business.
+              </p>
+
+              <!-- Desktop/tablet button -->
+              <div class="hidden sm:flex mt-6 lg:mt-12">
+                <a href="#solutions" class="
+                       bg-transparent border-2 border-white text-white
+                       px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold
+                       hover:bg-white hover:text-blue-600
+                       transition-all inline-block text-center
+                     ">
+                  View Services
+                </a>
+              </div>
+
+            </div>
+          </header>
+
+        </article>
+      </div>
+    </div>
+
+    <!-- Mobile-only pinned button -->
+    <nav aria-label="Primary navigation actions" class="
+             sm:hidden absolute bottom-28 left-0 w-full
+             flex justify-center
+           ">
+      <a href="#solutions" class="
+             bg-transparent border-2 border-white text-white
+             px-6 py-3 rounded-lg font-semibold
+             hover:bg-white hover:text-blue-600
+             transition-all inline-block text-center
+           ">
+        View Services
+      </a>
+    </nav>
+
+  </section>
+
+
+<!-- Solutions Section -->
+<section id="solutions" class="py-20 bg-white" role="region" aria-labelledby="solutions-heading" itemscope itemtype="https://schema.org/Service">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center mb-16">
+            <h2 id="solutions-heading" class="text-4xl font-bold text-gray-900 mb-4" itemprop="name">Our Professional Web Design Solutions</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto" itemprop="description">
+                We specialize in creating custom websites that perfectly match your vision and business goals. From high-converting landing pages to complete e-commerce solutions.
+            </p>
+        </header>
+        
+        <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+            
+            <!-- Landing Pages -->
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 card-hover transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg class="w-12 h-12 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Landing page icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900">High-Converting Landing Pages</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Professional landing pages designed for maximum conversions. Perfect for marketing campaigns, product launches, and lead generation with A/B testing capabilities.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-blue-600 font-semibold text-lg">
+                            Starting from €300
+                        </div>
+                        <button onclick="openServicePopup('landing-page')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors inline-block">
+                            See More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce -->
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 card-hover transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg class="w-12 h-12 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="E-commerce shop icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900">E-commerce Online Shops</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Complete e-commerce solutions with secure payment processing, inventory management, customer accounts, and beautiful product showcases.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-green-600 font-semibold text-lg">
+                            Starting from €1,000
+                        </div>
+                        <button onclick="openServicePopup('ecommerce')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors inline-block">
+                            See More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Websites -->
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 card-hover transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg class="w-12 h-12 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Custom website icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900">Custom Website Development</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Bespoke websites tailored to your specific needs - corporate sites, portfolios, blogs, or complex web applications with custom functionality.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-purple-600 font-semibold text-lg">
+                            Starting from €500
+                        </div>
+                        <button onclick="openServicePopup('custom-website')" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors inline-block">
+                            See More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design -->
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 card-hover transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg class="w-12 h-12 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Graphic design icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900">Professional Graphic Design</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Eye-catching logo design, brand identity, marketing materials, and visual graphics that make your business stand out from the competition.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <div class="text-orange-600 font-semibold text-lg">
+                            Starting from €50
+                        </div>
+                        <button onclick="openServicePopup('graphic-design')" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors inline-block">
+                            See More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+            <!-- Why Choose Us -->
+            <section class="py-20 bg-gradient-to-br from-purple-700 via-indigo-800 to-blue-700 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold mb-4">Why Choose R Design Studio?</h2>
+                        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                            We're not just another web design agency. Here's what makes us different.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">Fast Turnaround</h3>
+                                    <p class="text-gray-300">Most projects completed within 1-2 weeks without compromising on quality.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">Unlimited Revisions</h3>
+                                    <p class="text-gray-300">We work with you until you're 100% satisfied with the final result.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-2">Ongoing Support</h3>
+                                    <p class="text-gray-300">Free support and maintenance for 30 days after project completion.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                                <h3 class="text-2xl font-bold mb-6">Ready to Work Together?</h3>
+                                <p class="text-gray-300 mb-8">
+                                    Let's discuss your project and see how we can help bring your vision to life.
+                                </p>
+                                <button onclick="showContactPage();" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 hover:text-blue-600 transition-all">
+                                    Get Started Today
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- Reviews Section -->
+<section id="reviews" class="py-20 bg-white" role="region" aria-labelledby="reviews-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center mb-16">
+            <h2 id="reviews-heading" class="text-4xl font-bold text-gray-900 mb-4">Client Testimonials & Reviews</h2>
+            <p class="text-xl text-gray-600">
+                Don't just take our word for it - hear from our satisfied clients who've experienced our professional web design services
+            </p>
+        </header>
+    
+        <div class="relative">
+            <!-- Carousel Container -->
+            <div class="overflow-hidden">
+                <div id="carousel" class="flex transition-transform duration-500 ease-in-out -translate-x-full">
+
+
+                    <!-- Review 1 -->
+                    <div class="w-full flex-shrink-0 px-4" itemscope itemtype="https://schema.org/Review">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="R Design Studio"/>
+                        </div>
+                        <div class="max-w-4xl mx-auto">
+                            <div class="bg-blue-100 p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm text-center">
+                                <div class="flex justify-center items-center mb-6" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="5"/>
+                                    <meta itemprop="bestRating" content="5"/>
+                                    <div class="flex text-yellow-400 text-xl sm:text-2xl">
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                    </div>
+                                </div>
+                                <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto" itemprop="reviewBody">
+                                    "R Design Studio created an amazing landing page for our startup. The conversion rate increased by 40% within the first month. Their attention to detail is incredible!"
+                                </p>
+                                <div class="flex items-center justify-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold mr-4 text-base sm:text-lg">
+                                        SM
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-semibold text-gray-900 text-base sm:text-lg" itemprop="name">Sarah Martinez</div>
+                                        <div class="text-gray-500 text-sm sm:text-base">CEO, TechStart</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="w-full flex-shrink-0 px-4" itemscope itemtype="https://schema.org/Review">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="R Design Studio"/>
+                        </div>
+                        <div class="max-w-4xl mx-auto">
+                            <div class="bg-green-100 p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm text-center">
+                                <div class="flex justify-center items-center mb-6" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="5"/>
+                                    <meta itemprop="bestRating" content="5"/>
+                                    <div class="flex text-yellow-400 text-xl sm:text-2xl">
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                    </div>
+                                </div>
+                                <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto" itemprop="reviewBody">
+                                    "Professional, creative, and delivered exactly what we needed. Our online shop looks fantastic and sales have doubled since launch. Highly recommend!"
+                                </p>
+                                <div class="flex items-center justify-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-semibold mr-4 text-base sm:text-lg">
+                                        JC
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-semibold text-gray-900 text-base sm:text-lg" itemprop="name">James Chen</div>
+                                        <div class="text-gray-500 text-sm sm:text-base">Founder, EcoShop</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 3 -->
+                    <div class="w-full flex-shrink-0 px-4" itemscope itemtype="https://schema.org/Review">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+                            <meta itemprop="name" content="R Design Studio"/>
+                        </div>
+                        <div class="max-w-4xl mx-auto">
+                            <div class="bg-orange-100 p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm text-center">
+                                <div class="flex justify-center items-center mb-6" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                                    <meta itemprop="ratingValue" content="5"/>
+                                    <meta itemprop="bestRating" content="5"/>
+                                    <div class="flex text-yellow-400 text-xl sm:text-2xl">
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                        <span>⭐</span>
+                                    </div>
+                                </div>
+                                <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto" itemprop="reviewBody">
+                                    "They transformed my vision into a beautiful portfolio website. The design perfectly captures my artistic style and I've received so many compliments from visitors."
+                                </p>
+                                <div class="flex items-center justify-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-orange-600 rounded-full flex items-center justify-center text-white font-semibold mr-4 text-base sm:text-lg">
+                                        AR
+                                    </div>
+                                    <div class="text-left">
+                                        <div class="font-semibold text-gray-900 text-base sm:text-lg" itemprop="name">Alex Rivera</div>
+                                        <div class="text-gray-500 text-sm sm:text-base">Artist, ArtSpace Gallery</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button id="prevBtn" aria-label="Previous review"
+                class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-blue-50 text-gray-600 hover:text-blue-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center transition-all">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="nextBtn" aria-label="Next review"
+                class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-blue-50 text-gray-600 hover:text-blue-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center transition-all">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+        </main>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="hidden">
+        <!-- Navigation for Contact Page -->
+        <nav class="bg-gray-800 shadow-sm fixed w-full top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="flex items-center">
+                        <img alt="Logo" src="assets/logo.avif" class="h-8 w-auto" fetchpriority="high">
+                    </a>
+                </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#home" class="text-white hover:text-blue-400 transition-colors">← Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="py-20 bg-white pt-32" role="region" aria-labelledby="contact-heading" itemscope itemtype="https://schema.org/ContactPage">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Information - Shows first on mobile only, second on tablet+ -->
+                    <div class="space-y-8 order-1 md:order-2">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+<div>
+  <h3 class="font-semibold text-gray-900 mb-1">Email Us</h3>
+  <p class="text-gray-600">
+    <a href="mailto:contact@rdesigns.pro" class="text-blue-600 hover:text-blue-700 font-medium transition-colors">
+      contact@rdesigns.pro
+    </a>
+  </p>
+  <p class="text-sm text-gray-500 mt-1">We respond within 24 hours</p>
+</div>
+
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.785"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900 mb-1">WhatsApp Us</h3>
+                                        <a href="https://wa.me/447570429558?text=Hi%20R%20Design%20Studio!" class="text-green-600 hover:text-green-700 font-medium transition-colors">+447570429558</a>
+                                        <p class="text-sm text-gray-500 mt-1">Click to start a conversation</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900 mb-1">Connect on LinkedIn</h3>
+                                        <a href="https://www.linkedin.com/company/r-design-studio/?viewAsMember=true" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium transition-colors">R Design Studio</a>
+                                        <p class="text-sm text-gray-500 mt-1">Follow us for updates and insights</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-gray-900 mb-1">Location</h3>
+                                        <p class="text-gray-600">United Kingdom</p>
+                                        <p class="text-sm text-gray-500 mt-1">Serving clients worldwide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+<!-- Contact Form -->
+<div class="bg-blue-50 p-8 rounded-2xl shadow-sm order-2 md:order-1 relative">
+  <h2 class="text-2xl font-bold text-gray-900 mb-8">Get Your Free Quote</h2>
+  <form id="contact-form" class="space-y-6 relative" role="form" aria-label="Contact form for web design services">
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name *</label>
+        <input type="text" id="name" name="name" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-gray-300"
+          placeholder="John Doe">
+      </div>
+      <div>
+        <label for="reply_to" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+        <input type="email" id="reply_to" name="reply_to" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-gray-300"
+          placeholder="john@example.com">
+      </div>
+    </div>
+
+    <div>
+      <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Type *</label>
+      <select id="service" name="service" required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-gray-300">
+        <option value="">Select a service</option>
+        <option value="landing-page">Landing Page Design</option>
+        <option value="online-shop">E-commerce Online Shop</option>
+        <option value="custom-website">Custom Website Development</option>
+        <option value="graphic-design">Graphic Design Services</option>
+        <option value="website-redesign">Website Redesign</option>
+        <option value="other">Other Services</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
+      <textarea id="message" name="message" required rows="6"
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-gray-300"
+        placeholder="Tell us about your project goals, target audience, features you need, design preferences, and any other important details..."></textarea>
+    </div>
+
+    <!-- Success / Error Message -->
+    <div id="form-status" class="hidden p-4 rounded-lg text-gray-800 text-center font-semibold"></div>
+
+    <button type="button" id="send-btn"
+      class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+      data-gtm="request-quote-btn">
+      <span id="btn-text">Send Message & Get Free Quote</span>
+      <svg id="btn-spinner" class="hidden w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+      </svg>
+    </button>
+
+    <!-- Loader overlay -->
+    <div id="loader" class="hidden absolute inset-0 bg-gray-400/30 flex items-center justify-center rounded-2xl z-50">
+      <div class="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+    </div>
+
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+emailjs.init("Y1H3gwX-Yq_aCwX4q"); // Your Public Key
+
+const form = document.getElementById('contact-form');
+const button = document.getElementById('send-btn');
+const btnText = document.getElementById('btn-text');
+const btnSpinner = document.getElementById('btn-spinner');
+const loader = document.getElementById('loader');
+const status = document.getElementById('form-status');
+
+button.addEventListener('click', function() {
+  loader.classList.remove('hidden');
+  status.classList.add('hidden');
+  button.disabled = true;
+
+  btnText.textContent = "Sending...";
+  btnSpinner.classList.remove('hidden');
+
+  const templateParams = {
+    name: document.getElementById("name").value,
+    reply_to: document.getElementById("reply_to").value, // FIXED
+    service: document.getElementById("service").value,
+    message: document.getElementById("message").value,
+  };
+
+  const sendPromise = emailjs.send('service_k61q4ra', 'template_jarobva', templateParams);
+  const minDelay = new Promise(resolve => setTimeout(resolve, 1000));
+
+  Promise.all([sendPromise, minDelay])
+    .then(() => {
+      status.textContent = "✅ Your request has been sent successfully!";
+      status.classList.remove('hidden','bg-red-500');
+      status.classList.add('bg-green-500');
+      form.reset();
+    })
+    .catch((error) => {
+      console.error('FAILED...', error);
+      status.textContent = "❌ Oops! " + (error.text || JSON.stringify(error));
+      status.classList.remove('hidden','bg-green-500');
+      status.classList.add('bg-red-500');
+    })
+    .finally(() => {
+      loader.classList.add('hidden');
+      button.disabled = false;
+      btnText.textContent = "Send Message & Get Free Quote";
+      btnSpinner.classList.add('hidden');
+    });
+});
+</script>
+
+
+
+
+
+
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- FAQ Page -->
+    <div id="faq-page" class="hidden">
+        <!-- Navigation for FAQ Page -->
+        <nav class="bg-gray-800 shadow-sm fixed w-full top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="flex items-center">
+                        <img alt="Logo" src="assets/logo.avif" class="h-8 w-auto" fetchpriority="high">
+                    </a>
+                </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#home" class="text-white hover:text-blue-400 transition-colors">← Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="py-20 bg-gray-50 pt-32" role="region" aria-labelledby="faq-heading">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="text-center mb-16">
+                    <h2 id="faq-heading" class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Find answers to common questions about our web design services, process, and pricing.
+                    </p>
+                </header>
+
+                <div class="space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(1)">
+                            <h3 class="text-lg font-semibold text-gray-900">What web design services do you offer?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-1" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                We offer comprehensive web design services including high-converting landing pages, e-commerce online shops, custom website development, and professional graphic design services. All our websites are mobile-responsive, SEO-optimized, and built with modern technologies to ensure fast loading times and excellent user experience.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(2)">
+                            <h3 class="text-lg font-semibold text-gray-900">How long does it take to complete a website project?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-2" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Project timelines vary based on complexity. Landing pages typically take 5-7 business days, custom websites take 2-3 weeks, and e-commerce solutions take 2-4 weeks. We provide detailed timelines during the consultation phase and keep you updated throughout the process. Rush delivery options are available for urgent projects.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(3)">
+                            <h3 class="text-lg font-semibold text-gray-900">Do you offer unlimited revisions?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-3" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes! We offer unlimited revisions on all our projects. We work closely with you until you're 100% satisfied with the final result. Our goal is to ensure your website perfectly represents your brand and meets your business objectives. We believe in getting it right, no matter how many iterations it takes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(4)">
+                            <h3 class="text-lg font-semibold text-gray-900">Are your websites mobile-responsive and SEO-optimized?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-4" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Absolutely! All our websites are built with mobile-first design principles and are fully responsive across all devices. We also implement comprehensive SEO optimization including meta tags, structured data, fast loading times, clean code structure, and search engine-friendly URLs to help your website rank better in search results.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(5)">
+                            <h3 class="text-lg font-semibold text-gray-900">What is your pricing structure?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-5" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Our pricing varies based on project complexity and requirements. Landing pages start from €500, e-commerce websites from €1,000, custom websites from €500, and graphic design services from €50. We provide detailed quotes after understanding your specific needs during a free consultation. All prices include unlimited revisions and 30 days of free support.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(6)">
+                            <h3 class="text-lg font-semibold text-gray-900">Do you provide ongoing support and maintenance?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-6" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes! We provide 30 days of free support and maintenance after project completion. This includes bug fixes, minor content updates, and technical support. We also offer ongoing maintenance packages for long-term support, security updates, content management, and performance optimization.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(7)">
+                            <h3 class="text-lg font-semibold text-gray-900">What information do you need to get started?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-7" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                To get started, we need information about your business goals, target audience, preferred design style, required features, content (text and images), and any specific functionality needs. We'll guide you through this process during our initial consultation and provide a detailed questionnaire to ensure we capture all your requirements.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 -->
+                    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(8)">
+                            <h3 class="text-lg font-semibold text-gray-900">Can you help with content creation and copywriting?</h3>
+                            <svg class="faq-icon w-6 h-6 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-8" class="faq-content hidden px-8 pb-6">
+                            <p class="text-gray-600 leading-relaxed">
+                                Yes! We offer content creation and copywriting services as part of our comprehensive web design packages. Our team can help create compelling copy, source professional images, and develop content that resonates with your target audience and drives conversions. This service is available as an add-on to any project.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="mt-16 text-center">
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                        <h2 class="text-2xl font-bold mb-4">Still Have Questions?</h2>
+                        <p class="text-blue-100 mb-6">
+                            Can't find the answer you're looking for? We're here to help! Get in touch for a free consultation.
+                        </p>
+                        <button onclick="showContactPage();" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Contact Us Today
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="hidden">
+        <!-- Navigation for About Page -->
+        <nav class="bg-gray-800 shadow-sm fixed w-full top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="flex items-center">
+                        <img alt="Logo" src="assets/logo.avif" class="h-8 w-auto" fetchpriority="high">
+                    </a>
+                </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="#home" class="text-white hover:text-blue-400 transition-colors">← Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-600 text-white py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center pt-16">
+                        <h2 class="text-5xl sm:text-6xl font-bold mb-8 leading-tight">
+                            About R Design Studio
+                        </h2>
+                        <p class="text-xl sm:text-2xl text-purple-100 max-w-4xl mx-auto leading-relaxed mb-12">
+                            We're a passionate team of designers and developers dedicated to creating exceptional digital experiences that drive business growth.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        <section class="py-20 bg-gray-50 pt-32" role="region" aria-labelledby="about-heading" itemscope itemtype="https://schema.org/AboutPage">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="fade-in">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Founded with a vision to bridge the gap between creative design and technical excellence, R Design Studio has grown from a small team of passionate designers to a full-service digital agency trusted by businesses worldwide.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Our team combines years of experience in web design, development, and digital marketing to deliver solutions that not only look stunning but also drive real business results. From startups to established enterprises, we've helped hundreds of clients achieve their digital goals.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="text-center sm:text-left">
+                                <div class="text-3xl font-bold text-blue-600">200+</div>
+                                <div class="text-gray-600">Projects Completed</div>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <div class="text-3xl font-bold text-blue-600">150+</div>
+                                <div class="text-gray-600">Happy Clients</div>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <div class="text-3xl font-bold text-blue-600">4+</div>
+                                <div class="text-gray-600">Years Experience</div>
+                            </div>
+                        </div>
+                    </div>                   
+                    <div class="fade-in stagger-2">
+                        <div class="bg-white rounded-2xl p-8 shadow-sm">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Fast Delivery</h4>
+                                    <p class="text-sm text-gray-600">Quick turnaround without compromising quality</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Quality Assured</h4>
+                                    <p class="text-sm text-gray-600">Rigorous testing and quality control</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Client-Focused</h4>
+                                    <p class="text-sm text-gray-600">Your success is our top priority</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Custom Solutions</h4>
+                                    <p class="text-sm text-gray-600">Tailored to your unique needs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- Service Popup Modals -->
+    <div id="service-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="popup-title" class="text-3xl font-bold text-gray-900"></h2>
+                    <button onclick="closeServicePopup()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+                
+                <div id="popup-content" class="space-y-6">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+                
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <button onclick="requestQuote()" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all flex-1">
+                        Request Quote
+                    </button>
+                    <button onclick="closeServicePopup()" class="bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- keep 4 columns, but add extra spacing before the 2nd column -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Logo & Description -->
+            <div class="col-span-1 sm:col-span-2 md:col-span-1">
+                <div class="flex items-center mb-2">
+                    <a href="#home" class="flex items-center">
+                        <img alt="Logo" src="assets/logo.avif" class="h-6 w-auto" fetchpriority="high">
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    Professional web design agency creating amazing websites that drive results for businesses worldwide. Specializing in landing pages, e-commerce, and custom development.
+                </p>
+            </div>
+
+            <!-- Services -->
+            <div class="md:ml-12">
+                <h3 class="text-md font-semibold mb-2">Services</h3>
+                <ul class="space-y-1 text-gray-400 text-sm">
+                    <li><a href="#solutions" class="hover:text-white transition-colors">Web Design</a></li>
+                    <li><a href="#solutions" class="hover:text-white transition-colors">E-commerce</a></li>
+                    <li><a href="#solutions" class="hover:text-white transition-colors">Landing Pages</a></li>
+                    <li><a href="#solutions" class="hover:text-white transition-colors">Graphic Design</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div>
+                <h3 class="text-md font-semibold mb-2">Company</h3>
+                <ul class="space-y-1 text-gray-400 text-sm">
+                    <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div>
+                <h3 class="text-md font-semibold mb-2">Connect</h3>
+                <ul class="space-y-1 text-gray-400 text-sm">
+                    <li><a href="mailto:contact@rdesigns.pro" class="hover:text-white transition-colors">Email Us</a></li>
+                    <li><a href="https://wa.me/447570429558?text=Hi%20R%20Design%20Studio!" target="_blank" class="hover:text-white transition-colors">WhatsApp Us</a></li>
+                    <li><a href="https://www.linkedin.com/company/r-design-studio/?viewAsMember=true" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/r.designn.studio/" class="hover:text-white transition-colors">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 R Design Studio. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Page management system
+        let currentPage = 'main';
+        
+        function showMainWebsite() {
+            document.getElementById('main-website').classList.remove('hidden');
+            document.getElementById('contact-page').classList.add('hidden');
+            document.getElementById('about-page').classList.add('hidden');
+            document.getElementById('faq-page').classList.add('hidden');
+            currentPage = 'main';
+        }
+        
+        function showContactPage() {
+            document.getElementById('main-website').classList.add('hidden');
+            document.getElementById('contact-page').classList.remove('hidden');
+            document.getElementById('about-page').classList.add('hidden');
+            document.getElementById('faq-page').classList.add('hidden');
+            currentPage = 'contact';
+            window.scrollTo(0, 0);
+        }
+        
+        function showAboutPage() {
+            document.getElementById('main-website').classList.add('hidden');
+            document.getElementById('contact-page').classList.add('hidden');
+            document.getElementById('about-page').classList.remove('hidden');
+            document.getElementById('faq-page').classList.add('hidden');
+            currentPage = 'about';
+            window.scrollTo(0, 0);
+        }
+        
+        function showFAQPage() {
+            document.getElementById('main-website').classList.add('hidden');
+            document.getElementById('contact-page').classList.add('hidden');
+            document.getElementById('about-page').classList.add('hidden');
+            document.getElementById('faq-page').classList.remove('hidden');
+            currentPage = 'faq';
+            window.scrollTo(0, 0);
+        }
+
+        // Navigation link handling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                
+                // Handle page navigation
+                if (targetId === 'contact') {
+                    showContactPage();
+                } else if (targetId === 'about') {
+                    showAboutPage();
+                } else if (targetId === 'faq') {
+                    showFAQPage();
+                } else {
+                    // For main website sections
+                    showMainWebsite();
+                    
+                    // Then scroll to the target section
+                    setTimeout(() => {
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }, 100);
+                }
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-blue-600');
+                } else {
+                    dot.classList.remove('bg-blue-600');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Event listeners for carousel
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Service popup data
+        const serviceData = {
+            'landing-page': {
+                title: 'High-Converting Landing Pages',
+                content: `
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">What's Included:</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Custom responsive design</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Conversion optimization</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> A/B testing ready</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> SEO optimization</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Analytics integration</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Contact forms</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Social media integration</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Perfect For:</h3>
+                            <p class="text-gray-600 mb-4">Marketing campaigns, product launches, lead generation, event promotion, and service showcases.</p>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-800 font-semibold">⚡ Fast Delivery: 5-7 business days</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Pricing:</h3>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-2xl font-bold text-blue-600">Starting from €300</p>
+                                <p class="text-gray-600">Final price depends on complexity and features</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'ecommerce': {
+                title: 'E-commerce Online Shops',
+                content: `
+                    <div class="space-y-6">
+                        <div class="bg-green-50 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">What's Included:</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Complete online store setup</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Product catalog management</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Secure payment processing</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Inventory management</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Customer accounts</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Order management system</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Shipping integration</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Mobile-responsive design</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Perfect For:</h3>
+                            <p class="text-gray-600 mb-4">Retail businesses, product sellers, digital goods, subscription services, and marketplace platforms.</p>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-800 font-semibold">⚡ Delivery: 2-3 weeks</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Pricing:</h3>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-2xl font-bold text-green-600">Starting from €1,000</p>
+                                <p class="text-gray-600">Includes setup, design, and basic features</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'custom-website': {
+                title: 'Custom Website Development',
+                content: `
+                    <div class="space-y-6">
+                        <div class="bg-purple-50 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">What's Included:</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Bespoke design & development</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Custom functionality</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Content management system</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Database integration</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> API integrations</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> User authentication</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Admin dashboard</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Scalable architecture</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Perfect For:</h3>
+                            <p class="text-gray-600 mb-4">Corporate websites, web applications, portfolios, blogs, membership sites, and complex business solutions.</p>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-800 font-semibold">⚡ Delivery: 2-4 weeks</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Pricing:</h3>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-2xl font-bold text-purple-600">Starting from €500</p>
+                                <p class="text-gray-600">Varies based on complexity and requirements</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'graphic-design': {
+                title: 'Professional Graphic Design',
+                content: `
+                    <div class="space-y-6">
+                        <div class="bg-orange-50 p-6 rounded-xl">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">What's Included:</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Logo design & branding</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Business card design</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Marketing materials</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Social media graphics</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Print design</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Brand guidelines</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Digital assets</li>
+                                <li class="flex items-center"><span class="text-green-600 mr-2">✓</span> Multiple file formats</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Perfect For:</h3>
+                            <p class="text-gray-600 mb-4">New businesses, rebranding projects, marketing campaigns, and establishing visual identity.</p>
+                            <div class="bg-yellow-50 p-4 rounded-lg">
+                                <p class="text-yellow-800 font-semibold">⚡ Delivery: 3-5 business days</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Pricing:</h3>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-2xl font-bold text-orange-600">Starting from €50</p>
+                                <p class="text-gray-600">Logo packages start at €100, full branding from €300</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Popup functions
+        function openServicePopup(serviceType) {
+            const popup = document.getElementById('service-popup');
+            const title = document.getElementById('popup-title');
+            const content = document.getElementById('popup-content');
+            
+            const service = serviceData[serviceType];
+            if (service) {
+                title.textContent = service.title;
+                content.innerHTML = service.content;
+                popup.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeServicePopup() {
+            const popup = document.getElementById('service-popup');
+            popup.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function requestQuote() {
+            closeServicePopup();
+            showContactPage();
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('service-popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeServicePopup();
+            }
+        });
+
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // FAQ toggle functionality
+        function toggleFAQ(faqNumber) {
+            const content = document.getElementById(`faq-${faqNumber}`);
+            const icon = content.previousElementSibling.querySelector('.faq-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.solution-card');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97450cbe52f1c23e',t:'MTc1NjA2MTU3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+
+
+
+
+
+
+
+
