@@ -1,5 +1,6 @@
 {
-  "buildCommand": "echo 'No build needed for static site + serverless functions'",
+  "buildCommand": "",
+  "outputDirectory": ".",
   "functions": {
     "api/**/*.js": {
       "memory": 1024,
