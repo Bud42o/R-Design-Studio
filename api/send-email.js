@@ -68,13 +68,15 @@ export default async function handler(req, res) {
           </p>
         </div>
       `,
-      reply_to: email,
+      replyTo: email,
     });
 
-    if (businessEmailResponse.error) {
+    if (businessEmailResponse.error || !businessEmailResponse?.data?.id) {
       console.error("Error sending business email:", businessEmailResponse.error);
       return res.status(500).json({ error: "Failed to send email" });
     }
+
+    console.log("Business email queued", { id: businessEmailResponse.data.id });
 
     // Send auto-reply to customer
     try {
