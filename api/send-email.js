@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const allowedOrigin = process.env.ALLOWED_ORIGIN || "https://rdesigns.pro";
 
 function setCorsHeaders(res) {
@@ -21,6 +19,10 @@ export default async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    return res.status(500).json({ error: "Server email configuration is missing" });
   }
 
   // Extract form data
@@ -43,6 +45,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     // Send email to business inbox
     const businessEmailResponse = await resend.emails.send({
       from: "noreply@rdesigns.pro", // Must be a verified domain in Resend
