@@ -68,7 +68,7 @@ export default async function handler(req, res) {
           </p>
         </div>
       `,
-      replyTo: email,
+      reply_to: email,
     });
 
     if (businessEmailResponse.error) {
