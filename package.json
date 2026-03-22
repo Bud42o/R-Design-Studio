@@ -1,0 +1,13 @@
+{
+  "name": "rdesigns-contact-api",
+  "version": "1.0.0",
+  "description": "Serverless contact form handler for R Design Studio",
+  "private": true,
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}
