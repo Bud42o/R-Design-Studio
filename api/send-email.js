@@ -2,56 +2,44 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// CORS headers
-const corsHeaders = {
-  "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "https://rdesigns.pro",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-};
+const allowedOrigin = process.env.ALLOWED_ORIGIN || "https://rdesigns.pro";
+
+function setCorsHeaders(res) {
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Vary", "Origin");
+}
 
 export default async function handler(req, res) {
+  setCorsHeaders(res);
+
   // CORS preflight
   if (req.method === "OPTIONS") {
-    return res.status(200).json({}, { headers: corsHeaders });
+    return res.status(204).end();
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json(
-      { error: "Method not allowed" },
-      { headers: corsHeaders }
-    );
+    return res.status(405).json({ error: "Method not allowed" });
   }
-
-  // Rate limiting (simple per-IP check)
-  const clientIp = req.headers["x-forwarded-for"]?.split(",")[0] || "unknown";
-  const rateLimitKey = `ratelimit:${clientIp}`;
 
   // Extract form data
   const { name, email, service, message } = req.body;
 
   // Validation
   if (!name || !email || !service || !message) {
-    return res.status(400).json(
-      { error: "Missing required fields" },
-      { headers: corsHeaders }
-    );
+    return res.status(400).json({ error: "Missing required fields" });
   }
 
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    return res.status(400).json(
-      { error: "Invalid email address" },
-      { headers: corsHeaders }
-    );
+    return res.status(400).json({ error: "Invalid email address" });
   }
 
   // Message length check (prevent abuse)
   if (message.length > 5000) {
-    return res.status(400).json(
-      { error: "Message too long" },
-      { headers: corsHeaders }
-    );
+    return res.status(400).json({ error: "Message too long" });
   }
 
   try {
@@ -81,10 +69,7 @@ export default async function handler(req, res) {
 
     if (businessEmailResponse.error) {
       console.error("Error sending business email:", businessEmailResponse.error);
-      return res.status(500).json(
-        { error: "Failed to send email" },
-        { headers: corsHeaders }
-      );
+      return res.status(500).json({ error: "Failed to send email" });
     }
 
     // Send auto-reply to customer
@@ -117,21 +102,13 @@ export default async function handler(req, res) {
       console.warn("Auto-reply failed:", autoReplyError);
     }
 
-    return res
-      .status(200)
-      .json(
-        {
-          success: true,
-          message: "Your inquiry has been sent successfully!",
-        },
-        { headers: corsHeaders }
-      );
+    return res.status(200).json({
+      success: true,
+      message: "Your inquiry has been sent successfully!",
+    });
   } catch (error) {
     console.error("Email send error:", error);
-    return res.status(500).json(
-      { error: "Failed to process your request. Please try again." },
-      { headers: corsHeaders }
-    );
+    return res.status(500).json({ error: "Failed to process your request. Please try again." });
   }
 }
 
