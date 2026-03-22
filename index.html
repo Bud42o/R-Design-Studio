@@ -41,8 +41,7 @@ function loadGtag() {
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- Preconnect & Preload -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <!-- Preconnect & Preload -->
 
   <link rel="preload" href="assets/logo.avif" as="image" fetchpriority="high" type="image/avif">
   <link rel="preload" href="assets/bg-hero.avif" as="image" fetchpriority="high" type="image/avif">
@@ -89,8 +88,12 @@ function loadGtag() {
     <meta name="twitter:description" content="Creative branding, modern web development, and digital solutions that help your business grow.">
   <meta name="twitter:image" content="assets/logo.png">
 
-  <!-- Styles -->
-    <link rel="stylesheet" href="./output.css?v=20260322-1">
+    <!-- Styles -->
+    <link rel="preload" href="./output.css?v=20260322-1" as="style">
+    <link rel="stylesheet" href="./output.css?v=20260322-1" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="./output.css?v=20260322-1">
+    </noscript>
 
   <style>
     body {
