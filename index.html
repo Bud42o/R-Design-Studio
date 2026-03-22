@@ -1390,12 +1390,41 @@ form.addEventListener("submit", async (e) => {
         </div>
     </div>
 
+<style>
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .footer-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 768px) {
+        .footer-grid {
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+            column-gap: 2.5rem;
+        }
+
+        .footer-col-services {
+            padding-left: 1.5rem;
+        }
+
+        .footer-col-connect {
+            justify-self: end;
+        }
+    }
+</style>
+
 <!-- Footer -->
 <footer class="bg-gray-800 text-white py-8" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="footer-grid">
             <!-- Logo & Description -->
-            <div class="col-span-1 sm:col-span-2 md:col-span-1">
+                        <div class="footer-col-brand">
                 <div class="flex items-center mb-2">
                     <a href="#home" class="flex items-center">
                         <img alt="Logo" src="assets/logo.avif" width="401" height="70" class="h-6 w-auto" fetchpriority="high">
@@ -1407,7 +1436,7 @@ form.addEventListener("submit", async (e) => {
             </div>
 
             <!-- Services -->
-            <div>
+            <div class="footer-col-services">
                 <h3 class="text-md font-semibold mb-2">Services</h3>
                 <ul class="space-y-1 text-gray-400 text-sm">
                     <li><a href="#solutions" class="hover:text-white transition-colors">Web Development</a></li>
@@ -1429,7 +1458,7 @@ form.addEventListener("submit", async (e) => {
             </div>
 
             <!-- Connect -->
-            <div>
+            <div class="footer-col-connect">
                 <h3 class="text-md font-semibold mb-2">Connect</h3>
                 <ul class="space-y-1 text-gray-400 text-sm">
                     <li><a href="mailto:contact@rdesigns.pro" class="hover:text-white transition-colors">Email Us</a></li>
