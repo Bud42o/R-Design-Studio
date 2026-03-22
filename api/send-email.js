@@ -90,11 +90,6 @@ export default async function handler(req, res) {
             <p>Thank you for reaching out to <strong>R Design Studio</strong>!</p>
             <p>We've received your inquiry about <strong>${escapeHtml(service)}</strong> and will review your message carefully.</p>
             <p>Our team typically responds within <strong>24 hours</strong> during business hours (Monday-Friday, 09:00-18:00 GMT).</p>
-            <p>If you have any urgent questions, feel free to reach out via:</p>
-            <ul>
-              <li>WhatsApp: <a href="https://wa.me/447570429558">+447570429558</a></li>
-              <li>Email: <a href="mailto:contact@rdesigns.pro">contact@rdesigns.pro</a></li>
-            </ul>
             <p>Best regards,<br /><strong>R Design Studio Team</strong></p>
             <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;" />
             <p style="font-size: 12px; color: #666;">
