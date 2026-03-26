@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Dashboard</title>
+  <script type='text/javascript' src='https://c4sf1bz1dfryy0qg.canvacode.com/Wb2nIEOoqx_S6Bb2hJ__JMyudZ6jeT18Z0nYmmuYhdNEAW7C5keG_NNeG6hrIQp2aGaj5LTWe5ngGsmAXuGmIAkfLsSKXMixaD7pjrheq68qB1iALaASMQhm2NryEKEN4DVVAVA_bEtFjuZCwBcfULEnkgTK_kLGZ-TGi1SizB3ayASIqPNmYJeDLChHAz_p-4L4ESUuUTOhjCZaBas4v8VHaRcvZJJ_F_DH8URb8S2lbG-qtATVQFx3ZqpPBAedYH6Lx5lJq6O8SNFvQsUVqVCf4UZraSxp6x4f_NsWeEkhMO-TWjpG9mj0z7EP8giddzyiQNmFPz3Hj9St9mcldRSeM1k5AAL-0GkD5iybJsBOj0RSkjiNN0uTivsO-Q2OqUaMIcL-EnacbWLoMVBhwMYuOoHXaMKViAISkIYubgmIZn_YOZYy3JYB6mIK7CUUT-rfkfN9dxri63dXHhDZNnJt0a4GBUMPao6W-Saaapozm9T1Gdu-aKt6qOBRabwOMGTknIOeLdpci83h5VMKt8YrbECpe27vCezdraeZvi2RvqV3WP_-C6Sp9poy0DoCmT3GTaAyRUWiLXSdpXD99kYYnLxjTQGQZBbBXRDGxLWlYYNTIydy7DSK-v6eG7V4dxNl8NRzXq04p-eN9Jnd8LoW'></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .card-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .stat-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: #6366f1;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    
+    .chart-dot {
+      fill: #6366f1;
+      transition: r 0.2s ease;
+      cursor: pointer;
+    }
+    .chart-dot:hover {
+      r: 5;
+    }
+    
+    .chart-area-fill {
+      fill: url(#lineGradient);
+      opacity: 0.1;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeUp 0.5s ease forwards;
+      opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    .trend-up { color: #34d399; }
+    .trend-down { color: #f87171; }
+
+    .tooltip-container { position: relative; }
+    .tooltip-container .tooltip-box {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 50;
+      pointer-events: none;
+    }
+    .tooltip-container:hover .tooltip-box {
+      display: block;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="h-full w-full overflow-auto" style="background-color: #ffffff;">
+   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Header -->
+    <header class="mb-8 animate-in">
+     <div class="flex items-center gap-3 mb-1">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background-color: #6366f1;"><i data-lucide="bar-chart-3" style="width:18px;height:18px;color:#0f1117;"></i>
+      </div>
+      <h1 id="dashboard-title" class="text-2xl font-bold" style="color: #2f3038;">R Design Studio</h1>
+     </div>
+     <p id="website-name" class="ml-12 text-sm" style="color: #6b7084;">rdesigns.pro</p>
+    </header><!-- Main Dashboard Container -->
+    <section class="card-glow rounded-xl p-10 animate-in delay-1" style="background-color: #0f1117; border: 1px solid #2a2d3a;"><!-- Visitors Title -->
+     <h2 class="text-lg font-semibold mb-4" style="color: #e2e4ec;">Visitors</h2><!-- Stat Cards -->
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"><!-- 30 Days -->
+      <div class="stat-card card-glow rounded-xl p-5 animate-in delay-1" style="background-color: #252a38; border: 1px solid #343a4a;">
+       <div class="flex items-center justify-between mb-4"><span class="text-xs font-medium uppercase tracking-wider" style="color: #6b7084;">Last 30 Days</span>
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(99,102,241,0.12);"><i data-lucide="calendar" style="width:15px;height:15px;color:#6366f1;"></i>
+        </div>
+       </div>
+       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+        24,581
+       </div>
+       <div class="flex items-center gap-1.5"><i data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-up">+12.4%</span> <span class="text-xs" style="color: #6b7084;">vs prev. period</span>
+       </div><!-- Mini sparkline -->
+       <div class="flex items-end gap-0.5 mt-4 h-8">
+        <div class="flex-1 rounded-sm" style="height:40%;background-color:rgba(99,102,241,0.25);"></div>
+        <div class="flex-1 rounded-sm" style="height:55%;background-color:rgba(99,102,241,0.3);"></div>
+        <div class="flex-1 rounded-sm" style="height:35%;background-color:rgba(99,102,241,0.25);"></div>
+        <div class="flex-1 rounded-sm" style="height:65%;background-color:rgba(99,102,241,0.35);"></div>
+        <div class="flex-1 rounded-sm" style="height:50%;background-color:rgba(99,102,241,0.3);"></div>
+        <div class="flex-1 rounded-sm" style="height:70%;background-color:rgba(99,102,241,0.4);"></div>
+        <div class="flex-1 rounded-sm" style="height:85%;background-color:rgba(99,102,241,0.5);"></div>
+        <div class="flex-1 rounded-sm" style="height:75%;background-color:rgba(99,102,241,0.45);"></div>
+        <div class="flex-1 rounded-sm" style="height:90%;background-color:rgba(99,102,241,0.55);"></div>
+        <div class="flex-1 rounded-sm" style="height:100%;background-color:#6366f1;"></div>
+       </div>
+      </div><!-- 7 Days -->
+      <div class="stat-card card-glow rounded-xl p-5 animate-in delay-2" style="background-color: #252a38; border: 1px solid #343a4a;">
+       <div class="flex items-center justify-between mb-4"><span class="text-xs font-medium uppercase tracking-wider" style="color: #6b7084;">Last 7 Days</span>
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(52,211,153,0.12);"><i data-lucide="activity" style="width:15px;height:15px;color:#34d399;"></i>
+        </div>
+       </div>
+       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+        6,247
+       </div>
+       <div class="flex items-center gap-1.5"><i data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-up">+8.1%</span> <span class="text-xs" style="color: #6b7084;">vs prev. week</span>
+       </div>
+       <div class="flex items-end gap-0.5 mt-4 h-8">
+        <div class="flex-1 rounded-sm" style="height:60%;background-color:rgba(52,211,153,0.25);"></div>
+        <div class="flex-1 rounded-sm" style="height:45%;background-color:rgba(52,211,153,0.2);"></div>
+        <div class="flex-1 rounded-sm" style="height:75%;background-color:rgba(52,211,153,0.35);"></div>
+        <div class="flex-1 rounded-sm" style="height:55%;background-color:rgba(52,211,153,0.25);"></div>
+        <div class="flex-1 rounded-sm" style="height:80%;background-color:rgba(52,211,153,0.4);"></div>
+        <div class="flex-1 rounded-sm" style="height:65%;background-color:rgba(52,211,153,0.3);"></div>
+        <div class="flex-1 rounded-sm" style="height:100%;background-color:#34d399;"></div>
+       </div>
+      </div><!-- Today -->
+      <div class="stat-card card-glow rounded-xl p-5 animate-in delay-3" style="background-color: #252a38; border: 1px solid #343a4a;">
+       <div class="flex items-center justify-between mb-4"><span class="text-xs font-medium uppercase tracking-wider" style="color: #6b7084;">Today</span>
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(251,191,36,0.12);"><i data-lucide="zap" style="width:15px;height:15px;color:#fbbf24;"></i>
+        </div>
+       </div>
+       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+        482
+       </div>
+       <div class="flex items-center gap-1.5"><i data-lucide="trending-down" class="trend-down" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-down">-3.2%</span> <span class="text-xs" style="color: #6b7084;">vs yesterday</span>
+       </div>
+       <div class="flex items-end gap-0.5 mt-4 h-8">
+        <div class="flex-1 rounded-sm" style="height:30%;background-color:rgba(251,191,36,0.15);"></div>
+        <div class="flex-1 rounded-sm" style="height:50%;background-color:rgba(251,191,36,0.2);"></div>
+        <div class="flex-1 rounded-sm" style="height:80%;background-color:rgba(251,191,36,0.35);"></div>
+        <div class="flex-1 rounded-sm" style="height:100%;background-color:rgba(251,191,36,0.5);"></div>
+        <div class="flex-1 rounded-sm" style="height:70%;background-color:rgba(251,191,36,0.3);"></div>
+        <div class="flex-1 rounded-sm" style="height:45%;background-color:rgba(251,191,36,0.2);"></div>
+        <div class="flex-1 rounded-sm" style="height:20%;background-color:rgba(251,191,36,0.12);"></div>
+       </div>
+      </div>
+     </div><!-- Historical Chart -->
+     <div class="border-t" style="border-color: #2a2d3a; padding-top: 1.5rem;">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+       <div>
+        <h2 class="text-lg font-semibold" style="color: #e2e4ec;">History</h2>
+        <p class="text-xs mt-0.5" style="color: #6b7084;">Total website visits over time</p>
+       </div>
+       <div class="flex gap-1.5 rounded-lg p-1 flex-wrap" style="background-color: #1a1c27;"><button id="btn-12m" onclick="setRange('12m')" class="range-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors" style="background-color:transparent;color:#6b7084;">12 Months</button> <button id="btn-6m" onclick="setRange('6m')" class="range-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors" style="background-color:transparent;color:#6b7084;">6 Months</button> <button id="btn-30d" onclick="setRange('30d')" class="range-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors" style="background-color:#6366f1;color:#e2e4ec;">30 Days</button>
+       </div>
+      </div><!-- Y-axis + bars -->
+      <div class="flex gap-3"><!-- Y-axis labels -->
+       <div class="flex flex-col justify-between text-right pr-1 mono" style="height: 220px;"><span class="text-xs" style="color:#6b7084;">1.2k</span> <span class="text-xs" style="color:#6b7084;">900</span> <span class="text-xs" style="color:#6b7084;">600</span> <span class="text-xs" style="color:#6b7084;">300</span> <span class="text-xs" style="color:#6b7084;">0</span>
+       </div><!-- Chart area -->
+       <div class="flex-1 relative"><!-- Grid lines -->
+        <div class="absolute inset-0 flex flex-col justify-between pointer-events-none" style="height: 220px;">
+         <div style="border-top:1px dashed #2a2d3a;"></div>
+         <div style="border-top:1px dashed #2a2d3a;"></div>
+         <div style="border-top:1px dashed #2a2d3a;"></div>
+         <div style="border-top:1px dashed #2a2d3a;"></div>
+         <div style="border-top:1px solid #2a2d3a;"></div>
+        </div><!-- Bars -->
+        <div id="chart-bars" class="flex items-end gap-1 relative" style="height: 220px;"><!-- Bars injected by JS -->
+        </div><!-- X-axis labels -->
+        <div id="chart-labels" class="flex justify-between mt-2 mono"><!-- Labels injected by JS -->
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script>
+    // Sample data for 1 year (365 days)
+    const data1y = [
+      650, 720, 580, 810, 760, 900, 850, 680, 750, 920,
+      1050, 880, 790, 950, 1100, 870, 830, 960, 1020, 780,
+      850, 910, 1080, 990, 870, 940, 1150, 1050, 980, 1100,
+      920, 1020, 1180, 850, 960, 1090, 1030, 880, 950, 1120,
+      780, 1050, 1200, 920, 1080, 1150, 890, 1010, 1160, 1040,
+      900, 1070, 1220, 950, 1100, 1180, 920, 1030, 1190, 1080,
+      950, 1090, 1240, 980, 1120, 1200, 950, 1050, 1210, 1100,
+      970, 1110, 1260, 1000, 1140, 1220, 970, 1070, 1230, 1120,
+      990, 1130, 1280, 1020, 1160, 1240, 990, 1090, 1250, 1140,
+      1010, 1150, 1300, 1040, 1180, 1260, 1010, 1110, 1270, 1160,
+      1030, 1170, 1320, 1060, 1200, 1280, 1030, 1130, 1290, 1180,
+      1050, 1190, 1340, 1080, 1220, 1300, 1050, 1150, 1310, 1200,
+      1070, 1210, 1360, 1100, 1240, 1320, 1070, 1170, 1330, 1220,
+      1090, 1230, 1380, 1120, 1260, 1340, 1090, 1190, 1350, 1240,
+      1110, 1250, 1400, 1140, 1280, 1360, 1110, 1210, 1370, 1260,
+      1130, 1270, 1420, 1160, 1300, 1380, 1130, 1230, 1390, 1280,
+      1150, 1290, 1440, 1180, 1320, 1400, 1150, 1250, 1410, 1300,
+      1170, 1310, 1460, 1200, 1340, 1420, 1170, 1270, 1430, 1320,
+      1190, 1330, 1480, 1220, 1360, 1440, 1190, 1290, 1450, 1340,
+      1210, 1350, 1500, 1240, 1380, 1460, 1210, 1310, 1470, 1360,
+      1230, 1370, 1520, 1260, 1400, 1480, 1230, 1330, 1490, 1380,
+      1250, 1390, 1540, 1280, 1420, 1500, 1250, 1350, 1510, 1400,
+      1270, 1410, 1560, 1300, 1440, 1520, 1270, 1370, 1530, 1420,
+      1290, 1430, 1580, 1320, 1460, 1540, 1290, 1390, 1550, 1440,
+      1310, 1450, 1600, 1340, 1480, 1560, 1310, 1410, 1570, 1460,
+      1330, 1470, 1620, 1360, 1500, 1580, 1330, 1430, 1590, 1480,
+      1350, 1490, 1640, 1380, 1520, 1600, 1350, 1450, 1610, 1500
+    ];
+
+    function generateLabels(count, range) {
+      const labels = [];
+      const now = new Date();
+      
+      if (range === '12m') {
+        for (let i = count - 1; i >= 0; i--) {
+          const d = new Date(now);
+          d.setDate(d.getDate() - i);
+          if (i % 30 === 0 || i === 0) {
+            labels.push(d.toLocaleDateString('en-US', { month: 'short' }));
+          } else {
+            labels.push('');
+          }
+        }
+      } else if (range === '6m') {
+        for (let i = count - 1; i >= 0; i--) {
+          const d = new Date(now);
+          d.setDate(d.getDate() - i);
+          if (i % 15 === 0 || i === 0) {
+            labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+          } else {
+            labels.push('');
+          }
+        }
+      } else {
+        for (let i = count - 1; i >= 0; i--) {
+          const d = new Date(now);
+          d.setDate(d.getDate() - i);
+          labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        }
+      }
+      return labels;
+    }
+
+    let currentRange = '30d';
+
+    function setRange(range) {
+      currentRange = range;
+      document.querySelectorAll('.range-btn').forEach(btn => {
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = '#6b7084';
+      });
+      document.getElementById('btn-' + range).style.backgroundColor = '#6366f1';
+      document.getElementById('btn-' + range).style.color = '#e2e4ec';
+      renderChart();
+    }
+
+    function renderChart() {
+      const sliceMap = { '30d': 30, '6m': 180, '12m': 365 };
+      const count = sliceMap[currentRange];
+      const data = data1y.slice(-count);
+      const labels = generateLabels(count, currentRange);
+      const maxVal = 1600;
+      const minVal = 0;
+
+      const chartContainer = document.getElementById('chart-bars');
+      const labelsContainer = document.getElementById('chart-labels');
+      chartContainer.innerHTML = '';
+      labelsContainer.innerHTML = '';
+
+      // Create SVG for line chart
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('viewBox', `0 0 ${(count - 1) * 40 + 40} 220`);
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.style.width = '100%';
+      svg.style.height = '220px';
+
+      // Define gradient for area fill
+      const defs = document.createElementNS(svgNS, 'defs');
+      const gradient = document.createElementNS(svgNS, 'linearGradient');
+      gradient.setAttribute('id', 'lineGradient');
+      gradient.setAttribute('x1', '0%');
+      gradient.setAttribute('y1', '0%');
+      gradient.setAttribute('x2', '0%');
+      gradient.setAttribute('y2', '100%');
+      
+      const stop1 = document.createElementNS(svgNS, 'stop');
+      stop1.setAttribute('offset', '0%');
+      stop1.setAttribute('stop-color', '#6366f1');
+      stop1.setAttribute('stop-opacity', '0.3');
+      
+      const stop2 = document.createElementNS(svgNS, 'stop');
+      stop2.setAttribute('offset', '100%');
+      stop2.setAttribute('stop-color', '#6366f1');
+      stop2.setAttribute('stop-opacity', '0');
+      
+      gradient.appendChild(stop1);
+      gradient.appendChild(stop2);
+      defs.appendChild(gradient);
+      svg.appendChild(defs);
+
+      // Create path for line
+      let pathData = '';
+      let areaPathData = 'M ';
+      
+      data.forEach((val, i) => {
+        const x = i * 40 + 20;
+        const y = 220 - (val / maxVal) * 220;
+        
+        if (i === 0) {
+          pathData = `M ${x} ${y}`;
+          areaPathData += `${x} ${y} `;
+        } else {
+          pathData += ` L ${x} ${y}`;
+          areaPathData += `L ${x} ${y} `;
+        }
+      });
+
+      // Add area path closure
+      areaPathData += `L ${(count - 1) * 40 + 20} 220 L 20 220 Z`;
+
+      // Create area fill
+      const area = document.createElementNS(svgNS, 'path');
+      area.setAttribute('d', areaPathData);
+      area.setAttribute('fill', 'url(#lineGradient)');
+      svg.appendChild(area);
+
+      // Create line
+      const line = document.createElementNS(svgNS, 'path');
+      line.setAttribute('d', pathData);
+      line.setAttribute('class', 'chart-line');
+      line.style.opacity = '0';
+      svg.appendChild(line);
+
+      // Animate line in
+      setTimeout(() => {
+        line.style.opacity = '1';
+        line.style.transition = 'opacity 0.8s ease';
+      }, 50);
+
+      // Create dots with tooltips
+      data.forEach((val, i) => {
+        const x = i * 40 + 20;
+        const y = 220 - (val / maxVal) * 220;
+
+        const g = document.createElementNS(svgNS, 'g');
+        g.className = 'tooltip-container';
+        
+        // Invisible larger hitbox
+        const hitbox = document.createElementNS(svgNS, 'circle');
+        hitbox.setAttribute('cx', x);
+        hitbox.setAttribute('cy', y);
+        hitbox.setAttribute('r', '8');
+        hitbox.setAttribute('fill', 'transparent');
+        hitbox.style.cursor = 'pointer';
+        
+        // Visible dot
+        const dot = document.createElementNS(svgNS, 'circle');
+        dot.setAttribute('cx', x);
+        dot.setAttribute('cy', y);
+        dot.setAttribute('r', '3.5');
+        dot.setAttribute('class', 'chart-dot');
+
+        // Tooltip
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip-box';
+        tooltip.style.backgroundColor = '#2a2d3a';
+        tooltip.style.color = '#e2e4ec';
+        tooltip.innerHTML = `<span class="mono font-medium">${val.toLocaleString()}</span><br><span style="color:#6b7084;font-size:10px;">${labels[i]}</span>`;
+        
+        g.appendChild(hitbox);
+        g.appendChild(dot);
+        g.appendChild(tooltip);
+        svg.appendChild(g);
+      });
+
+      chartContainer.appendChild(svg);
+
+      // X-axis labels
+      const labelCount = Math.min(6, count);
+      const step = Math.floor(count / labelCount);
+      for (let i = 0; i < count; i++) {
+        const lbl = document.createElement('span');
+        lbl.className = 'text-xs';
+        lbl.style.color = '#6b7084';
+        lbl.style.flex = '1';
+        lbl.style.textAlign = 'center';
+        lbl.style.fontSize = '10px';
+        if (i % step === 0 || i === count - 1) {
+          lbl.textContent = labels[i];
+        }
+        labelsContainer.appendChild(lbl);
+      }
+    }
+
+    // Element SDK
+    const defaultConfig = {
+      dashboard_title: 'My Website Dashboard',
+      website_name: 'mysite.com',
+      background_color: '#ffffff',
+      surface_color: '#0f1117',
+      text_color: '#e2e4ec',
+      accent_color: '#6366f1',
+      muted_color: '#6b7084',
+      font_family: 'DM Sans',
+      font_size: 16
+    };
+
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+
+      document.getElementById('dashboard-title').textContent = c.dashboard_title;
+      document.getElementById('website-name').textContent = c.website_name;
+
+      // Background
+      document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
+
+      // Surfaces
+      document.querySelectorAll('.stat-card, section.card-glow').forEach(el => {
+        el.style.backgroundColor = c.surface_color;
+        el.style.borderColor = c.surface_color;
+      });
+
+      // Text color
+      document.querySelectorAll('.mono.text-3xl, h1, h2').forEach(el => {
+        el.style.color = c.text_color;
+      });
+
+      // Accent
+      const activeBtn = document.getElementById('btn-' + currentRange);
+      if (activeBtn) activeBtn.style.backgroundColor = c.accent_color;
+
+      // Font
+      const fontStack = `${c.font_family}, DM Sans, sans-serif`;
+      document.body.style.fontFamily = fontStack;
+      document.getElementById('dashboard-title').style.fontFamily = fontStack;
+
+      // Font size
+      const base = c.font_size || 16;
+      document.getElementById('dashboard-title').style.fontSize = `${base * 1.5}px`;
+      document.getElementById('website-name').style.fontSize = `${base * 0.85}px`;
+    }
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => { applyConfig(config); },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
+          },
+          {
+            get: () => config.muted_color || defaultConfig.muted_color,
+            set: (v) => { config.muted_color = v; window.elementSdk.setConfig({ muted_color: v }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+        }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['dashboard_title', config.dashboard_title || defaultConfig.dashboard_title],
+        ['website_name', config.website_name || defaultConfig.website_name]
+      ])
+    });
+
+    // Initial render
+    renderChart();
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e201fb47582a14c',t:'MTc3NDQ2NDg2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
