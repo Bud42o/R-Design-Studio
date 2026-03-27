@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Dashboard</title>
-  <script type='text/javascript' src='https://c4sf1bz1dfryy0qg.canvacode.com/Wb2nIEOoqx_S6Bb2hJ__JMyudZ6jeT18Z0nYmmuYhdNEAW7C5keG_NNeG6hrIQp2aGaj5LTWe5ngGsmAXuGmIAkfLsSKXMixaD7pjrheq68qB1iALaASMQhm2NryEKEN4DVVAVA_bEtFjuZCwBcfULEnkgTK_kLGZ-TGi1SizB3ayASIqPNmYJeDLChHAz_p-4L4ESUuUTOhjCZaBas4v8VHaRcvZJJ_F_DH8URb8S2lbG-qtATVQFx3ZqpPBAedYH6Lx5lJq6O8SNFvQsUVqVCf4UZraSxp6x4f_NsWeEkhMO-TWjpG9mj0z7EP8giddzyiQNmFPz3Hj9St9mcldRSeM1k5AAL-0GkD5iybJsBOj0RSkjiNN0uTivsO-Q2OqUaMIcL-EnacbWLoMVBhwMYuOoHXaMKViAISkIYubgmIZn_YOZYy3JYB6mIK7CUUT-rfkfN9dxri63dXHhDZNnJt0a4GBUMPao6W-Saaapozm9T1Gdu-aKt6qOBRabwOMGTknIOeLdpci83h5VMKt8YrbECpe27vCezdraeZvi2RvqV3WP_-C6Sp9poy0DoCmT3GTaAyRUWiLXSdpXD99kYYnLxjTQGQZBbBXRDGxLWlYYNTIydy7DSK-v6eG7V4dxNl8NRzXq04p-eN9Jnd8LoW'></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
   <style>
@@ -92,19 +90,51 @@
       display: block;
     }
   </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>
+    body { box-sizing: border-box; }
+
+    .logout-btn {
+      border: 1px solid #343a4a;
+      background: #1a1c27;
+      color: #e2e4ec;
+      border-radius: 9px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: 120ms ease;
+    }
+
+    .logout-btn:hover {
+      background: #262938;
+    }
+
+    .error-banner {
+      display: none;
+      margin-top: 12px;
+      margin-left: 3rem;
+      background: rgba(248, 113, 113, 0.1);
+      border: 1px solid rgba(248, 113, 113, 0.35);
+      color: #fda4af;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+  </style>
  </head>
  <body class="h-full">
   <div id="app-wrapper" class="h-full w-full overflow-auto" style="background-color: #ffffff;">
    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><!-- Header -->
     <header class="mb-8 animate-in">
-     <div class="flex items-center gap-3 mb-1">
+     <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
+      <div class="flex items-center gap-3">
       <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background-color: #6366f1;"><i data-lucide="bar-chart-3" style="width:18px;height:18px;color:#0f1117;"></i>
       </div>
       <h1 id="dashboard-title" class="text-2xl font-bold" style="color: #2f3038;">R Design Studio</h1>
+      </div>
+      <button id="logout-btn" class="logout-btn" type="button">Sign out</button>
      </div>
-     <p id="website-name" class="ml-12 text-sm" style="color: #6b7084;">rdesigns.pro</p>
+     <p id="website-name" class="ml-12 text-sm" style="color: #6b7084;">Signed in as <span id="user-email" class="mono">...</span></p>
+     <p id="dash-error" class="error-banner"></p>
     </header><!-- Main Dashboard Container -->
     <section class="card-glow rounded-xl p-10 animate-in delay-1" style="background-color: #0f1117; border: 1px solid #2a2d3a;"><!-- Visitors Title -->
      <h2 class="text-lg font-semibold mb-4" style="color: #e2e4ec;">Visitors</h2><!-- Stat Cards -->
@@ -114,10 +144,10 @@
         <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(99,102,241,0.12);"><i data-lucide="calendar" style="width:15px;height:15px;color:#6366f1;"></i>
         </div>
        </div>
-       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
-        24,581
+      <div id="stat-30" class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+       -
        </div>
-       <div class="flex items-center gap-1.5"><i data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-up">+12.4%</span> <span class="text-xs" style="color: #6b7084;">vs prev. period</span>
+      <div class="flex items-center gap-1.5"><i id="icon-30" data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span id="trend-30" class="text-xs font-medium trend-up">-</span> <span class="text-xs" style="color: #6b7084;">vs prev. period</span>
        </div><!-- Mini sparkline -->
        <div class="flex items-end gap-0.5 mt-4 h-8">
         <div class="flex-1 rounded-sm" style="height:40%;background-color:rgba(99,102,241,0.25);"></div>
@@ -137,10 +167,10 @@
         <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(52,211,153,0.12);"><i data-lucide="activity" style="width:15px;height:15px;color:#34d399;"></i>
         </div>
        </div>
-       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
-        6,247
+      <div id="stat-7" class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+       -
        </div>
-       <div class="flex items-center gap-1.5"><i data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-up">+8.1%</span> <span class="text-xs" style="color: #6b7084;">vs prev. week</span>
+      <div class="flex items-center gap-1.5"><i id="icon-7" data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span id="trend-7" class="text-xs font-medium trend-up">-</span> <span class="text-xs" style="color: #6b7084;">vs prev. week</span>
        </div>
        <div class="flex items-end gap-0.5 mt-4 h-8">
         <div class="flex-1 rounded-sm" style="height:60%;background-color:rgba(52,211,153,0.25);"></div>
@@ -157,10 +187,10 @@
         <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: rgba(251,191,36,0.12);"><i data-lucide="zap" style="width:15px;height:15px;color:#fbbf24;"></i>
         </div>
        </div>
-       <div class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
-        482
+      <div id="stat-today" class="mono text-3xl font-bold mb-2" style="color: #e2e4ec;">
+       -
        </div>
-       <div class="flex items-center gap-1.5"><i data-lucide="trending-down" class="trend-down" style="width:14px;height:14px;"></i> <span class="text-xs font-medium trend-down">-3.2%</span> <span class="text-xs" style="color: #6b7084;">vs yesterday</span>
+      <div class="flex items-center gap-1.5"><i id="icon-today" data-lucide="trending-up" class="trend-up" style="width:14px;height:14px;"></i> <span id="trend-today" class="text-xs font-medium trend-up">-</span> <span class="text-xs" style="color: #6b7084;">vs yesterday</span>
        </div>
        <div class="flex items-end gap-0.5 mt-4 h-8">
         <div class="flex-1 rounded-sm" style="height:30%;background-color:rgba(251,191,36,0.15);"></div>
@@ -183,7 +213,7 @@
        </div>
       </div><!-- Y-axis + bars -->
       <div class="flex gap-3"><!-- Y-axis labels -->
-       <div class="flex flex-col justify-between text-right pr-1 mono" style="height: 220px;"><span class="text-xs" style="color:#6b7084;">1.2k</span> <span class="text-xs" style="color:#6b7084;">900</span> <span class="text-xs" style="color:#6b7084;">600</span> <span class="text-xs" style="color:#6b7084;">300</span> <span class="text-xs" style="color:#6b7084;">0</span>
+      <div id="y-axis" class="flex flex-col justify-between text-right pr-1 mono" style="height: 220px;"><span class="text-xs" style="color:#6b7084;">1.2k</span> <span class="text-xs" style="color:#6b7084;">900</span> <span class="text-xs" style="color:#6b7084;">600</span> <span class="text-xs" style="color:#6b7084;">300</span> <span class="text-xs" style="color:#6b7084;">0</span>
        </div><!-- Chart area -->
        <div class="flex-1 relative"><!-- Grid lines -->
         <div class="absolute inset-0 flex flex-col justify-between pointer-events-none" style="height: 220px;">
@@ -204,76 +234,72 @@
    </div>
   </div>
   <script>
-    // Sample data for 1 year (365 days)
-    const data1y = [
-      650, 720, 580, 810, 760, 900, 850, 680, 750, 920,
-      1050, 880, 790, 950, 1100, 870, 830, 960, 1020, 780,
-      850, 910, 1080, 990, 870, 940, 1150, 1050, 980, 1100,
-      920, 1020, 1180, 850, 960, 1090, 1030, 880, 950, 1120,
-      780, 1050, 1200, 920, 1080, 1150, 890, 1010, 1160, 1040,
-      900, 1070, 1220, 950, 1100, 1180, 920, 1030, 1190, 1080,
-      950, 1090, 1240, 980, 1120, 1200, 950, 1050, 1210, 1100,
-      970, 1110, 1260, 1000, 1140, 1220, 970, 1070, 1230, 1120,
-      990, 1130, 1280, 1020, 1160, 1240, 990, 1090, 1250, 1140,
-      1010, 1150, 1300, 1040, 1180, 1260, 1010, 1110, 1270, 1160,
-      1030, 1170, 1320, 1060, 1200, 1280, 1030, 1130, 1290, 1180,
-      1050, 1190, 1340, 1080, 1220, 1300, 1050, 1150, 1310, 1200,
-      1070, 1210, 1360, 1100, 1240, 1320, 1070, 1170, 1330, 1220,
-      1090, 1230, 1380, 1120, 1260, 1340, 1090, 1190, 1350, 1240,
-      1110, 1250, 1400, 1140, 1280, 1360, 1110, 1210, 1370, 1260,
-      1130, 1270, 1420, 1160, 1300, 1380, 1130, 1230, 1390, 1280,
-      1150, 1290, 1440, 1180, 1320, 1400, 1150, 1250, 1410, 1300,
-      1170, 1310, 1460, 1200, 1340, 1420, 1170, 1270, 1430, 1320,
-      1190, 1330, 1480, 1220, 1360, 1440, 1190, 1290, 1450, 1340,
-      1210, 1350, 1500, 1240, 1380, 1460, 1210, 1310, 1470, 1360,
-      1230, 1370, 1520, 1260, 1400, 1480, 1230, 1330, 1490, 1380,
-      1250, 1390, 1540, 1280, 1420, 1500, 1250, 1350, 1510, 1400,
-      1270, 1410, 1560, 1300, 1440, 1520, 1270, 1370, 1530, 1420,
-      1290, 1430, 1580, 1320, 1460, 1540, 1290, 1390, 1550, 1440,
-      1310, 1450, 1600, 1340, 1480, 1560, 1310, 1410, 1570, 1460,
-      1330, 1470, 1620, 1360, 1500, 1580, 1330, 1430, 1590, 1480,
-      1350, 1490, 1640, 1380, 1520, 1600, 1350, 1450, 1610, 1500
-    ];
+    let data1y = [];
+    let currentRange = '30d';
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString('en-US');
+    }
+
+    function formatTrend(value) {
+      const sign = value > 0 ? '+' : '';
+      return `${sign}${value.toFixed(1)}%`;
+    }
+
+    function setTrend(targetId, iconId, value) {
+      const text = document.getElementById(targetId);
+      const icon = document.getElementById(iconId);
+      const up = value >= 0;
+
+      text.textContent = formatTrend(value);
+      text.className = `text-xs font-medium ${up ? 'trend-up' : 'trend-down'}`;
+      icon.setAttribute('data-lucide', up ? 'trending-up' : 'trending-down');
+      icon.className = up ? 'trend-up' : 'trend-down';
+    }
+
+    function parseDateValue(raw) {
+      const year = Number(raw.slice(0, 4));
+      const month = Number(raw.slice(4, 6)) - 1;
+      const day = Number(raw.slice(6, 8));
+      return new Date(year, month, day);
+    }
 
     function generateLabels(count, range) {
       const labels = [];
-      const now = new Date();
-      
-      if (range === '12m') {
-        for (let i = count - 1; i >= 0; i--) {
-          const d = new Date(now);
-          d.setDate(d.getDate() - i);
-          if (i % 30 === 0 || i === 0) {
-            labels.push(d.toLocaleDateString('en-US', { month: 'short' }));
-          } else {
-            labels.push('');
-          }
-        }
-      } else if (range === '6m') {
-        for (let i = count - 1; i >= 0; i--) {
-          const d = new Date(now);
-          d.setDate(d.getDate() - i);
-          if (i % 15 === 0 || i === 0) {
-            labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
-          } else {
-            labels.push('');
-          }
-        }
-      } else {
-        for (let i = count - 1; i >= 0; i--) {
-          const d = new Date(now);
-          d.setDate(d.getDate() - i);
+      const slice = data1y.slice(-count);
+
+      for (let i = 0; i < slice.length; i += 1) {
+        const d = parseDateValue(slice[i].date);
+        if (range === '12m') {
+          labels.push(i % 30 === 0 || i === slice.length - 1 ? d.toLocaleDateString('en-US', { month: 'short' }) : '');
+        } else if (range === '6m') {
+          labels.push(i % 15 === 0 || i === slice.length - 1 ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '');
+        } else {
           labels.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
         }
       }
+
       return labels;
     }
 
-    let currentRange = '30d';
+    function renderYAxis(maxVal) {
+      const axis = document.getElementById('y-axis');
+      axis.innerHTML = '';
+      const ticks = 4;
+
+      for (let i = ticks; i >= 0; i -= 1) {
+        const value = Math.round((maxVal / ticks) * i);
+        const label = document.createElement('span');
+        label.className = 'text-xs';
+        label.style.color = '#6b7084';
+        label.textContent = value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value);
+        axis.appendChild(label);
+      }
+    }
 
     function setRange(range) {
       currentRange = range;
-      document.querySelectorAll('.range-btn').forEach(btn => {
+      document.querySelectorAll('.range-btn').forEach((btn) => {
         btn.style.backgroundColor = 'transparent';
         btn.style.color = '#6b7084';
       });
@@ -285,17 +311,19 @@
     function renderChart() {
       const sliceMap = { '30d': 30, '6m': 180, '12m': 365 };
       const count = sliceMap[currentRange];
-      const data = data1y.slice(-count);
+      const points = data1y.slice(-count);
       const labels = generateLabels(count, currentRange);
-      const maxVal = 1600;
-      const minVal = 0;
+
+      const values = points.map((entry) => entry.value);
+      const maxVal = Math.max(...values, 10);
+
+      renderYAxis(maxVal);
 
       const chartContainer = document.getElementById('chart-bars');
       const labelsContainer = document.getElementById('chart-labels');
       chartContainer.innerHTML = '';
       labelsContainer.innerHTML = '';
 
-      // Create SVG for line chart
       const svgNS = 'http://www.w3.org/2000/svg';
       const svg = document.createElementNS(svgNS, 'svg');
       svg.setAttribute('viewBox', `0 0 ${(count - 1) * 40 + 40} 220`);
@@ -303,7 +331,6 @@
       svg.style.width = '100%';
       svg.style.height = '220px';
 
-      // Define gradient for area fill
       const defs = document.createElementNS(svgNS, 'defs');
       const gradient = document.createElementNS(svgNS, 'linearGradient');
       gradient.setAttribute('id', 'lineGradient');
@@ -311,30 +338,27 @@
       gradient.setAttribute('y1', '0%');
       gradient.setAttribute('x2', '0%');
       gradient.setAttribute('y2', '100%');
-      
+
       const stop1 = document.createElementNS(svgNS, 'stop');
       stop1.setAttribute('offset', '0%');
       stop1.setAttribute('stop-color', '#6366f1');
       stop1.setAttribute('stop-opacity', '0.3');
-      
+
       const stop2 = document.createElementNS(svgNS, 'stop');
       stop2.setAttribute('offset', '100%');
       stop2.setAttribute('stop-color', '#6366f1');
       stop2.setAttribute('stop-opacity', '0');
-      
+
       gradient.appendChild(stop1);
       gradient.appendChild(stop2);
       defs.appendChild(gradient);
       svg.appendChild(defs);
 
-      // Create path for line
       let pathData = '';
       let areaPathData = 'M ';
-      
-      data.forEach((val, i) => {
+      values.forEach((val, i) => {
         const x = i * 40 + 20;
         const y = 220 - (val / maxVal) * 220;
-        
         if (i === 0) {
           pathData = `M ${x} ${y}`;
           areaPathData += `${x} ${y} `;
@@ -344,176 +368,100 @@
         }
       });
 
-      // Add area path closure
       areaPathData += `L ${(count - 1) * 40 + 20} 220 L 20 220 Z`;
 
-      // Create area fill
       const area = document.createElementNS(svgNS, 'path');
       area.setAttribute('d', areaPathData);
       area.setAttribute('fill', 'url(#lineGradient)');
       svg.appendChild(area);
 
-      // Create line
       const line = document.createElementNS(svgNS, 'path');
       line.setAttribute('d', pathData);
       line.setAttribute('class', 'chart-line');
-      line.style.opacity = '0';
       svg.appendChild(line);
-
-      // Animate line in
-      setTimeout(() => {
-        line.style.opacity = '1';
-        line.style.transition = 'opacity 0.8s ease';
-      }, 50);
-
-      // Create dots with tooltips
-      data.forEach((val, i) => {
-        const x = i * 40 + 20;
-        const y = 220 - (val / maxVal) * 220;
-
-        const g = document.createElementNS(svgNS, 'g');
-        g.className = 'tooltip-container';
-        
-        // Invisible larger hitbox
-        const hitbox = document.createElementNS(svgNS, 'circle');
-        hitbox.setAttribute('cx', x);
-        hitbox.setAttribute('cy', y);
-        hitbox.setAttribute('r', '8');
-        hitbox.setAttribute('fill', 'transparent');
-        hitbox.style.cursor = 'pointer';
-        
-        // Visible dot
-        const dot = document.createElementNS(svgNS, 'circle');
-        dot.setAttribute('cx', x);
-        dot.setAttribute('cy', y);
-        dot.setAttribute('r', '3.5');
-        dot.setAttribute('class', 'chart-dot');
-
-        // Tooltip
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip-box';
-        tooltip.style.backgroundColor = '#2a2d3a';
-        tooltip.style.color = '#e2e4ec';
-        tooltip.innerHTML = `<span class="mono font-medium">${val.toLocaleString()}</span><br><span style="color:#6b7084;font-size:10px;">${labels[i]}</span>`;
-        
-        g.appendChild(hitbox);
-        g.appendChild(dot);
-        g.appendChild(tooltip);
-        svg.appendChild(g);
-      });
 
       chartContainer.appendChild(svg);
 
-      // X-axis labels
       const labelCount = Math.min(6, count);
-      const step = Math.floor(count / labelCount);
-      for (let i = 0; i < count; i++) {
-        const lbl = document.createElement('span');
-        lbl.className = 'text-xs';
-        lbl.style.color = '#6b7084';
-        lbl.style.flex = '1';
-        lbl.style.textAlign = 'center';
-        lbl.style.fontSize = '10px';
+      const step = Math.max(1, Math.floor(count / labelCount));
+      for (let i = 0; i < count; i += 1) {
+        const label = document.createElement('span');
+        label.className = 'text-xs';
+        label.style.color = '#6b7084';
+        label.style.flex = '1';
+        label.style.textAlign = 'center';
+        label.style.fontSize = '10px';
         if (i % step === 0 || i === count - 1) {
-          lbl.textContent = labels[i];
+          label.textContent = labels[i];
         }
-        labelsContainer.appendChild(lbl);
+        labelsContainer.appendChild(label);
       }
     }
 
-    // Element SDK
-    const defaultConfig = {
-      dashboard_title: 'My Website Dashboard',
-      website_name: 'mysite.com',
-      background_color: '#ffffff',
-      surface_color: '#0f1117',
-      text_color: '#e2e4ec',
-      accent_color: '#6366f1',
-      muted_color: '#6b7084',
-      font_family: 'DM Sans',
-      font_size: 16
-    };
-
-    function applyConfig(config) {
-      const c = { ...defaultConfig, ...config };
-
-      document.getElementById('dashboard-title').textContent = c.dashboard_title;
-      document.getElementById('website-name').textContent = c.website_name;
-
-      // Background
-      document.getElementById('app-wrapper').style.backgroundColor = c.background_color;
-
-      // Surfaces
-      document.querySelectorAll('.stat-card, section.card-glow').forEach(el => {
-        el.style.backgroundColor = c.surface_color;
-        el.style.borderColor = c.surface_color;
-      });
-
-      // Text color
-      document.querySelectorAll('.mono.text-3xl, h1, h2').forEach(el => {
-        el.style.color = c.text_color;
-      });
-
-      // Accent
-      const activeBtn = document.getElementById('btn-' + currentRange);
-      if (activeBtn) activeBtn.style.backgroundColor = c.accent_color;
-
-      // Font
-      const fontStack = `${c.font_family}, DM Sans, sans-serif`;
-      document.body.style.fontFamily = fontStack;
-      document.getElementById('dashboard-title').style.fontFamily = fontStack;
-
-      // Font size
-      const base = c.font_size || 16;
-      document.getElementById('dashboard-title').style.fontSize = `${base * 1.5}px`;
-      document.getElementById('website-name').style.fontSize = `${base * 0.85}px`;
+    function showError(message) {
+      const box = document.getElementById('dash-error');
+      box.style.display = 'block';
+      box.textContent = message;
     }
 
-    window.elementSdk.init({
-      defaultConfig,
-      onConfigChange: async (config) => { applyConfig(config); },
-      mapToCapabilities: (config) => ({
-        recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
-          },
-          {
-            get: () => config.surface_color || defaultConfig.surface_color,
-            set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
-          },
-          {
-            get: () => config.accent_color || defaultConfig.accent_color,
-            set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }
-          },
-          {
-            get: () => config.muted_color || defaultConfig.muted_color,
-            set: (v) => { config.muted_color = v; window.elementSdk.setConfig({ muted_color: v }); }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
-        }
-      }),
-      mapToEditPanelValues: (config) => new Map([
-        ['dashboard_title', config.dashboard_title || defaultConfig.dashboard_title],
-        ['website_name', config.website_name || defaultConfig.website_name]
-      ])
-    });
+    async function logout() {
+      await fetch('/api/session-logout', {
+        method: 'POST',
+        credentials: 'same-origin',
+      });
+      window.location.href = '/login.html';
+    }
 
-    // Initial render
-    renderChart();
-    lucide.createIcons();
+    async function initDashboard() {
+      const meRes = await fetch('/api/session-me', {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store',
+      });
+
+      if (!meRes.ok) {
+        window.location.href = '/login.html';
+        return;
+      }
+
+      const mePayload = await meRes.json();
+      document.getElementById('user-email').textContent = mePayload.user.email;
+
+      const metricsRes = await fetch('/api/dashboard-metrics', {
+        method: 'GET',
+        credentials: 'same-origin',
+        cache: 'no-store',
+      });
+
+      if (!metricsRes.ok) {
+        const payload = await metricsRes.json().catch(() => ({}));
+        throw new Error(payload.error || 'Failed to load analytics data.');
+      }
+
+      const payload = await metricsRes.json();
+      data1y = payload.series || [];
+
+      if (!data1y.length) {
+        throw new Error('No analytics data available for this property yet.');
+      }
+
+      document.getElementById('stat-30').textContent = formatNumber(payload.totals.days30);
+      document.getElementById('stat-7').textContent = formatNumber(payload.totals.days7);
+      document.getElementById('stat-today').textContent = formatNumber(payload.totals.today);
+
+      setTrend('trend-30', 'icon-30', Number(payload.totals.change30 || 0));
+      setTrend('trend-7', 'icon-7', Number(payload.totals.change7 || 0));
+      setTrend('trend-today', 'icon-today', Number(payload.totals.changeToday || 0));
+
+      renderChart();
+      lucide.createIcons();
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', logout);
+
+    initDashboard().catch((error) => {
+      showError(error.message || 'Dashboard failed to load.');
+    });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e201fb47582a14c',t:'MTc3NDQ2NDg2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>

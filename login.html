@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-0: #0b0f17;
+      --bg-1: #111726;
+      --bg-2: #1a2233;
+      --line: #2a3449;
+      --text-0: #e6ebf7;
+      --text-1: #9ea8c3;
+      --accent: #6366f1;
+      --accent-2: #4f46e5;
+      --danger: #f87171;
+      --ok: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(1200px 600px at 0% 0%, #202f4f 0%, transparent 65%),
+        radial-gradient(900px 500px at 100% 100%, #1e2247 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg-0) 0%, #0a0d14 100%);
+      color: var(--text-0);
+    }
+
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #22d3ee);
+      box-shadow: 0 8px 18px rgba(99, 102, 241, 0.35);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      margin: 6px 0 24px;
+      color: var(--text-1);
+      font-size: 0.92rem;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--text-1);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--bg-1);
+      color: var(--text-0);
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-size: 0.97rem;
+      outline: none;
+      transition: border-color 120ms ease, box-shadow 120ms ease;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 6px 0 18px;
+      gap: 12px;
+      color: var(--text-1);
+      font-size: 0.85rem;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #eef2ff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px;
+      cursor: pointer;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
+    }
+
+    .error {
+      min-height: 1.2em;
+      margin-top: 12px;
+      color: var(--danger);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .create-account-row {
+      margin-top: 10px;
+      text-align: center;
+      color: var(--text-1);
+      font-size: 0.86rem;
+    }
+
+    .text-link {
+      border: 0;
+      background: transparent;
+      color: #a5b4fc;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      width: auto;
+      display: inline;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .text-link:hover {
+      filter: none;
+      transform: none;
+      color: #c7d2fe;
+    }
+
+    .hint {
+      margin-top: 14px;
+      color: var(--text-1);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .ok {
+      color: var(--ok);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 22px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="login-title">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>R Design Studio</span>
+      </div>
+      <h1 id="login-title">Dashboard Login</h1>
+      <p class="subtitle">Authenticate to access visitor metrics and historical charts.</p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <div class="field" id="confirm-wrap" hidden>
+          <label for="confirm-password">Confirm Password</label>
+          <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password">
+        </div>
+
+        <div class="row">
+          <span class="mono">Secure session cookie</span>
+          <span class="ok" id="status"></span>
+        </div>
+
+        <button id="submit-btn" type="submit">Login</button>
+        <p class="create-account-row" id="signup-row">
+          <span id="create-copy">No account yet?</span>
+          <button id="mode-toggle" class="text-link" type="button">Create new user</button>
+        </p>
+        <p id="error" class="error" role="alert" aria-live="polite"></p>
+      </form>
+
+      <p class="hint">This page expects auth endpoints at <span class="mono">/api/session-login</span> and <span class="mono">/api/session-me</span>.</p>
+    </section>
+  </main>
+
+  <script>
+    const ALLOW_SELF_SIGNUP = false;
+    const form = document.getElementById("login-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const modeToggleBtn = document.getElementById("mode-toggle");
+    const signupRow = document.getElementById("signup-row");
+    const createCopy = document.getElementById("create-copy");
+    const title = document.getElementById("login-title");
+    const errorBox = document.getElementById("error");
+    const statusBox = document.getElementById("status");
+    const confirmWrap = document.getElementById("confirm-wrap");
+    const confirmInput = document.getElementById("confirm-password");
+    const passwordInput = document.getElementById("password");
+
+    let authMode = "signin";
+
+    function setAuthMode(nextMode) {
+      authMode = nextMode;
+      const isSignUp = authMode === "signup";
+
+      confirmWrap.hidden = !isSignUp;
+      confirmInput.required = isSignUp;
+      confirmInput.value = "";
+      passwordInput.setAttribute("autocomplete", isSignUp ? "new-password" : "current-password");
+
+      title.textContent = isSignUp ? "Create Dashboard User" : "Dashboard Login";
+      createCopy.textContent = isSignUp ? "Already have an account?" : "No account yet?";
+      modeToggleBtn.textContent = isSignUp ? "Back to login" : "Create new user";
+
+      submitBtn.textContent = isSignUp ? "Create account" : "Login";
+      errorBox.textContent = "";
+      statusBox.textContent = "";
+    }
+
+    function setBusy(isBusy) {
+      submitBtn.disabled = isBusy;
+      if (isBusy) {
+        submitBtn.textContent = authMode === "signup" ? "Creating account..." : "Logging in...";
+      } else {
+        submitBtn.textContent = authMode === "signup" ? "Create account" : "Login";
+      }
+    }
+
+    async function checkExistingSession() {
+      try {
+        const res = await fetch("/api/session-me", {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store"
+        });
+
+        if (res.ok) {
+          statusBox.textContent = "Session active";
+          window.location.href = "/dashboard.html";
+        }
+      } catch {
+        // Keep user on login page if API is unavailable.
+      }
+    }
+
+    async function onSubmit(event) {
+      event.preventDefault();
+      errorBox.textContent = "";
+      statusBox.textContent = "";
+
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        errorBox.textContent = "Please enter both email and password.";
+        return;
+      }
+
+      if (authMode === "signup") {
+        const confirmPassword = confirmInput.value;
+        if (password.length < 8) {
+          errorBox.textContent = "Use at least 8 characters for password.";
+          return;
+        }
+        if (password !== confirmPassword) {
+          errorBox.textContent = "Passwords do not match.";
+          return;
+        }
+      }
+
+      setBusy(true);
+
+      try {
+        const endpoint = authMode === "signup" ? "/api/session-register" : "/api/session-login";
+
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            email,
+            username: email,
+            password
+          })
+        });
+
+        if (!res.ok) {
+          let message = authMode === "signup"
+            ? "Could not create account."
+            : "Invalid email or password.";
+
+          if (res.status === 404 && authMode === "signup") {
+            message = "Registration endpoint not found. Add /api/session-register first.";
+          }
+
+          try {
+            const payload = await res.json();
+            if (payload && payload.error) message = payload.error;
+          } catch {
+            // Use default message when response has no JSON body.
+          }
+          errorBox.textContent = message;
+          return;
+        }
+
+        statusBox.textContent = authMode === "signup" ? "Account created" : "Signed in";
+
+        window.location.href = "/dashboard.html";
+      } catch {
+        errorBox.textContent = "Could not reach authentication service. Try again.";
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    if (!ALLOW_SELF_SIGNUP) {
+      signupRow.hidden = true;
+    }
+
+    if (modeToggleBtn) {
+      modeToggleBtn.addEventListener("click", () => {
+        if (!ALLOW_SELF_SIGNUP) return;
+        setAuthMode(authMode === "signup" ? "signin" : "signup");
+      });
+    }
+    form.addEventListener("submit", onSubmit);
+    setAuthMode("signin");
+    checkExistingSession();
+  </script>
+</body>
+</html>
