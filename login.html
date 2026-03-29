@@ -301,7 +301,7 @@
 
         if (res.ok) {
           statusBox.textContent = "Session active";
-          window.location.href = "/dashboard.html";
+          window.location.href = "/dashboard";
         }
       } catch {
         // Keep user on login page if API is unavailable.
@@ -372,7 +372,7 @@
 
         statusBox.textContent = authMode === "signup" ? "Account created" : "Signed in";
 
-        window.location.href = "/dashboard.html";
+        window.location.href = "/dashboard";
       } catch {
         errorBox.textContent = "Could not reach authentication service. Try again.";
       } finally {

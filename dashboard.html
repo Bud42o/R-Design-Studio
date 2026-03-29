@@ -409,7 +409,7 @@
         method: 'POST',
         credentials: 'same-origin',
       });
-      window.location.href = '/login.html';
+      window.location.href = '/login';
     }
 
     async function initDashboard() {
@@ -420,7 +420,7 @@
       });
 
       if (!meRes.ok) {
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         return;
       }
 
