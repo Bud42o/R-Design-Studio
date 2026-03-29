@@ -1,6 +1,46 @@
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import { readSessionFromRequest } from "./_auth.js";
 
+function stripWrappingQuotes(value) {
+  if (!value) return value;
+  if (
+    (value.startsWith('"') && value.endsWith('"')) ||
+    (value.startsWith("'") && value.endsWith("'"))
+  ) {
+    return value.slice(1, -1);
+  }
+  return value;
+}
+
+function normalizePropertyId(value) {
+  return String(value || "")
+    .trim()
+    .replace(/^properties\//, "");
+}
+
+function normalizePrivateKey(value) {
+  const raw = stripWrappingQuotes(String(value || "").trim());
+  if (!raw) return "";
+  return raw.replace(/\\n/g, "\n").replace(/\r\n/g, "\n");
+}
+
+function readAnalyticsCredentials() {
+  const serviceAccountJson = process.env.GA4_SERVICE_ACCOUNT_JSON;
+
+  if (serviceAccountJson) {
+    const parsed = JSON.parse(stripWrappingQuotes(serviceAccountJson));
+    return {
+      client_email: String(parsed.client_email || "").trim(),
+      private_key: normalizePrivateKey(parsed.private_key),
+    };
+  }
+
+  return {
+    client_email: String(process.env.GA4_CLIENT_EMAIL || "").trim(),
+    private_key: normalizePrivateKey(process.env.GA4_PRIVATE_KEY),
+  };
+}
+
 function buildDateKey(offsetDays) {
   const date = new Date();
   date.setUTCHours(0, 0, 0, 0);
@@ -24,15 +64,11 @@ function percentDelta(current, previous) {
 }
 
 function createAnalyticsClient() {
-  const clientEmail = process.env.GA4_CLIENT_EMAIL;
-  const privateKey = process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  const credentials = readAnalyticsCredentials();
 
-  if (clientEmail && privateKey) {
+  if (credentials.client_email && credentials.private_key) {
     return new BetaAnalyticsDataClient({
-      credentials: {
-        client_email: clientEmail,
-        private_key: privateKey,
-      },
+      credentials,
     });
   }
 
@@ -49,7 +85,7 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: "Not signed in." });
   }
 
-  const propertyId = process.env.GA4_PROPERTY_ID;
+  const propertyId = normalizePropertyId(process.env.GA4_PROPERTY_ID);
   if (!propertyId) {
     return res.status(500).json({ error: "Missing GA4_PROPERTY_ID." });
   }
@@ -104,9 +140,9 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error("dashboard-metrics error", error);
+    const detail = error?.details || error?.message || "Unknown GA4 client error.";
     return res.status(500).json({
-      error:
-        "Failed to read analytics data. Confirm GA4_PROPERTY_ID, GA4_CLIENT_EMAIL, GA4_PRIVATE_KEY, and that the service account has GA4 access.",
+      error: `Failed to read analytics data. ${detail}`,
     });
   }
 }
